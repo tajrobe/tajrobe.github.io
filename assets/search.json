@@ -1,0 +1,22 @@
+---
+layout: null
+sitemap: false
+---
+{%- capture json -%}
+[
+  {%- assign collections = site.collections | where_exp:'collection','collection.output != false' -%}
+  {%- for collection in collections -%}
+    {%- assign docs = collection.docs | where_exp:'doc','doc.sitemap != false' -%}
+    {%- for doc in docs -%}
+      {
+        "title": {{ doc.title | jsonify }},
+        "title_en": {{ doc.company_slug | replace: "-", " " | jsonify }},
+        "city": {{ doc.city | markdownify | strip_html | jsonify }},
+        "content": {{ doc.content | markdownify | strip_html | jsonify }},
+        "url": {{ site.baseurl | append: doc.url | jsonify }}
+      }{%- unless forloop.last %},{%- endunless -%}
+    {%- endfor -%}
+  {%- endfor -%}
+]
+{%- endcapture -%}
+{{ json | lstrip }}

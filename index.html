@@ -1,0 +1,57 @@
+---
+layout: default
+---
+<div class="hero lazyloaded" data-bg="/assets/bg_lg.jpg" style="background-image: url(&quot;/assets/bg_lg.jpg&quot;);">
+    <div class="hero__wrap">
+        <h1 class="hero__title">اشتراک‌گذاری تجربه‌ی کاری با همه!</h1>
+        <br/>
+        <h2 class="hero-search" onclick="window.location.href='/search'">جستجوی نام شرکت مورد نظر...</h2>
+    </div>
+</div>
+<main class="site__content">
+    <section class="blog">
+        <div class="container">
+                <div class="row"></div>
+            	{%- assign n = paginator.posts | size -%}
+                {%- assign posts = paginator.posts | sample: n -%}	
+                {% for post in posts %}
+                    <div class="col-md-4 col-lg-4 col-xl-4">
+                        <a class="black-link" href="{{ site.baseurl }}{{ post.url }}"><div class="place-card place-card--small">
+                                    <div class="place-card__img">
+                                <img src="/assets/company-logo.png" class="place-card__img-thumbnail" alt="Thumbnail">
+                            </div>
+                            <div class="place-card__content">
+                                <h3 class="place-card__content_header">{{ post.title }}</h3>
+                                <p class="mb-0"><i class="fa fa-map-marker"></i> <span class="text-muted">{{ post.city }}</span></p>
+                                
+                            </div>
+                        </div></a>
+                    </div>
+                {% endfor %}
+            <div style="clear: both"></div>
+            {% if paginator.total_pages > 1 %}
+            <ul class="pagination justify-content-center flex-wrap">
+                {% if paginator.previous_page %}
+                <li class="page-item"><a class="page-link" href="{{ paginator.previous_page_path | relative_url }}"><span aria-hidden="true">&laquo; </span></a></li>
+                {% else %}
+                <li class="page-item disabled"><a class="page-link" href="{{ paginator.previous_page_path | relative_url }}"><span aria-hidden="true">&laquo; </span></a></li>
+                {% endif %}
+                {% for page in (1..paginator.total_pages) %}
+                {% if page == paginator.page %}
+                <li class="page-item active"><a class="page-link" href="#" >{{ page }}</a></li>
+                {% elsif page == 1 %}
+                <li class="page-item"><a class="page-link" href="{{ '/' | relative_url }}">{{ page }}</a></li>
+                {% else %}
+                <li class="page-item "><a class="page-link" href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if paginator.next_page %}
+                <li class="page-item"><a class="page-link" href="{{ paginator.next_page_path | relative_url }}"><span aria-hidden="true"> &raquo;</span></a></li>
+                {% else %}
+                <li class="page-item disabled"><a class="page-link" href="{{ paginator.previous_page_path | relative_url }}"><span aria-hidden="true"> &raquo;</span></a></li>
+                {% endif %}
+            </ul>
+            {% endif %}
+        </div>
+    </section>
+</main>

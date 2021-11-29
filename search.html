@@ -1,0 +1,68 @@
+---
+layout: default
+---
+<div class="hero lazyloaded" data-bg="/assets/bg_lg.jpg" style="background-image: url(&quot;/assets/bg_lg.jpg&quot;);">
+    <div class="hero__wrap">
+        <h1 class="hero__title">اشتراک‌گذاری تجربه‌ی کاری با همه!</h1>
+        <br/>
+        <h2 class="hero-search"><input class="input" id="search" type="search" name="search" autocomplete="off" placeholder="جستجوی نام شرکت مورد نظر..."></h2>
+    </div>
+</div>
+<main class="site__content">
+    <section class="blog">
+        <div class="container">
+                <div class="row"></div>
+                <div id="list">
+                    
+                </div>
+            <div style="clear: both"></div>
+        </div>
+    </section>
+</main>
+<script type="text/javascript" src="{{ "/assets/fetch.js" | relative_url }}"></script>
+<script type="text/javascript">
+  const endpoint = '{{ "/assets/search.json" | relative_url }}';
+  const pages = [];
+  fetch(endpoint)
+    .then(blob => blob.json())
+    .then(data => pages.push(...data))
+
+  function findResults(termToMatch, pages) {
+    return pages.filter(item => {
+      const regex = new RegExp(termToMatch, 'gi');
+      return item.title.match(regex) || item.content.match(regex) || item.title_en.match(regex);
+    });
+  }
+
+  function displayResults() {
+    const resultsArray = findResults(this.value, pages);
+    const html = resultsArray.map(item => {
+      return `
+      <div class="col-md-4 col-lg-4 col-xl-4 pull-right">
+        <a class="black-link" href="${item.url}"><div class="place-card place-card--small">
+                    <div class="place-card__img">
+                <img src="/assets/company-logo.png" class="place-card__img-thumbnail" alt="Thumbnail">
+            </div>
+            <div class="place-card__content">
+                <h3 class="place-card__content_header">${item.title}</h3>
+                <p class="mb-0"><i class="fa fa-map-marker"></i> <span class="text-muted">${item.city}</span></p>
+            </div>
+        </div></a>
+    </div>`;
+    }).join('');
+    if ((resultsArray.length == 0) || (this.value == '')) {
+      const company = document.querySelector('#search').value;
+      resultsList.innerHTML = `<br/><p class="center">شرکت «${company}» یافت نشد، می‌خواهید «${company}» را به <a href="{{ site.github }}issues/new/choose" target="_blank">به لیست شرکت‌ها اضافه کنید؟</a></p><br/><br/><br/>`;
+    } else {
+      resultsList.innerHTML = html;
+    }
+  }
+  const field = document.querySelector('#search');
+  const resultsList = document.querySelector('#list');
+  field.addEventListener('keyup', displayResults);
+  field.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
+  });
+</script>

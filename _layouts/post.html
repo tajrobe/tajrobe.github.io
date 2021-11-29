@@ -1,0 +1,86 @@
+---
+layout: default
+---
+<div class="p-header post-header">
+  <div class="post-cover">
+     <div class="coverContainer container u-clearFix">
+        <div class="coverContainerInner">
+           <img class="logo-section logo-img" src="/assets/company-logo.png">
+           <div class="c-info">
+              <h2 class="c-name">{{ page.title }}</h2>
+              <div class="c-meta">
+                 <span class="c-metaItem">{{ page.industry }}</span>
+                 <span class="c-metaItem">{{ page.size }}</span>
+                 <span class="c-metaItem">
+                 <a class="c-metaLink" rel="nofollow" href="{{ page.site }}" target="_blank">{{ page.site }}</a>
+                 </span>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+</div>
+<div class="blog">
+<div class="container">
+{%- assign comments = site.data.review[page.company_slug] -%}
+{%- assign totalRate = 0 -%}
+{%- assign totalSize = comments | size -%}
+{%- if totalSize == 0 -%} {%- assign totalSize = 1 -%} {%- endif -%}
+{%- for comment in comments -%}
+   {% assign totalRate = totalRate | plus: comment[1].rate %}
+{%- endfor -%}
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+        <section id="review-suggest-section" class="c-cardText o-box review-suggest-section">
+          <span>تجربه‌ی کار در {{ page.title }} را دارید؟</span><a id="review-suggest-section-link" class="pull-left review-suggest-section-link" href="/review?slug={{ page.company_slug }}" style="">ثبت تجربه‌ی کاری</a>
+        </section>
+        <section class="c-cardText o-box">
+           <div class="pull-right">
+             <h4 class="c-cardText__title">معرفی شرکت</h4>
+           </div>
+           <div class="pull-left center">
+            <div class="rating">
+              <div class="rating-upper" style="width: {{ totalRate | divided_by: totalSize | times: 20 | round: 2 }}%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+              <div class="rating-lower"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>
+            <br/><span class="gray"><small>میانگین امتیازات</small> {{ totalRate | divided_by: totalSize | round: 2 }}</span>
+          </div>
+           <div style="clear:both"></div>
+           <div class="c-cardText__body">
+              <p>{{ content }}</p>
+              <small><a href="{{ site.github }}blob/master/{{ page.path }}" target="_blank">ویرایش اطلاعات شرکت</a></small>
+           </div>
+        </section>
+        <h4 class="c-heading c-heading--h4">تجربه&zwnj;های کاری در {{ page.title }}</h4>
+        {%- for comment in comments -%}
+        <section class="c-cardText o-box">
+          <div class="pull-right">
+            <h4 class="c-cardText__title">{{ comment[1].job_name }} | {{ comment[1].state }}</h4>
+            <time class="gray" datetime="{{ comment[1].date | slice: 0,10 }}000">{{ comment[1].date | slice: 0,10 |  date: '%B %d, %Y' }}</time>
+          </div>
+          <div class="pull-left center">
+            <div class="rating">
+              <div class="rating-upper" style="width: {{ comment[1].rate | times: 20 }}%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+              <div class="rating-lower"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>
+            <br/><span class="gray">{{ comment[1].rate }}</span>
+          </div>
+          <div style="clear:both"></div>
+           <div class="c-cardText__body">
+              <p>{{ comment[1].description | newline_to_br | strip_newlines |  replace: '<p><br></p>', ''}}</p><hr>
+              {% assign pros = comment[1].pros | split: "," %}
+              {% assign cons = comment[1].cons | split: "," %}
+              <p><b>مزایا: </b>{%- for pro in pros -%}<span class="label">{{pro | replace: '"', '' | replace: ']', '' | replace: '[', '' }}</span> {%- endfor -%}</p>
+              <p><b>معایب: </b>{%- for con in cons -%}<span class="label">{{con | replace: '"', '' | replace: ']', '' | replace: '[', '' }}</span> {%- endfor -%}</p>
+              <small><a href="{{ site.github }}blob/master/_data/review/{{ page.company_slug }}/{{ comment[0] }}.yml" target="_blank">پیوند یکتای این تجربه‌ی کاری</a></small>
+
+           </div>
+        </section>
+        {%- endfor -%}
+  </div>
+  </div>
+    <br/><br/>
+    {% include disqus.html %}
+</div>
+</div>
+<script>let url = new URL(window.location.href); document.querySelectorAll('time').forEach((t)=>{t.innerHTML=new Date(Number(t.getAttribute("datetime"))).toLocaleDateString('fa-IR')}); document.querySelector("#review-suggest-section-link").href += "&name=" + window.location.pathname.replaceAll("/", ""); if(url.searchParams.get("sendReview")) document.querySelector('#review-suggest-section').innerHTML = '<span>تجربه‌ی کاری شما با موفقیت ارسال شد و پس از تایید در این صفحه نمایش داده می‌شود.</span>';</script>

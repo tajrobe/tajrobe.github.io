@@ -1,0 +1,26 @@
+name: تجربه‌های کاری
+url: https://tajrobe.github.io
+baseurl: /
+permalink: /:title/
+paginate_path: /page/:num/
+paginate: 50
+disqus:
+github: https://github.com/tajrobe/tajrobe.github.io/
+reviewActionUrl : https://review4job.herokuapp.com/v2/entry/tajrobe/tajrobe.github.io/master/comments
+google_analytics:
+webmaster_verifications:
+  google: 
+defaults:
+  - scope:
+      path: assets/*
+    values:
+      sitemap: false 
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed 
+  - jekyll-paginate
+  - jekyll-seo-tag  
