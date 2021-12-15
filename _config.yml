@@ -3,7 +3,7 @@ url: https://tajrobe.github.io
 baseurl: /
 permalink: /:title/
 paginate_path: /page/:num/
-paginate: 50
+paginate: 200
 disqus:
 github: https://github.com/tajrobe/tajrobe.github.io/
 reviewActionUrl : https://review4job.herokuapp.com/v2/entry/tajrobe/tajrobe.github.io/master/comments
