@@ -67,7 +67,7 @@ layout: default
             {%- endif -%}
           </div>
           <div class="pull-left center">
-          {%- if comment[1].rate or comment[1].rate != "" or comment[1].rate != nil -%}
+          {%- if comment[1].rate == '' -%}{%- else -%}
             <div class="rating">
               <div class="rating-upper" style="width: {{ comment[1].rate | times: 20 }}%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
               <div class="rating-lower"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
