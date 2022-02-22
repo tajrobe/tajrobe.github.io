@@ -25,10 +25,14 @@ layout: default
 {%- assign comments = site.data.review[page.company_slug] -%}
 {%- assign totalRate = 0 -%}
 {%- assign totalSize = comments | size -%}
-{%- if totalSize == 0 -%} {%- assign totalSize = 1 -%} {%- endif -%}
 {%- for comment in comments -%}
-   {% assign totalRate = totalRate | plus: comment[1].rate %}
+   {%- if comment[1].rate != "" || if comment[1].rate != nil -%}
+      {% assign totalRate = totalRate | plus: comment[1].rate %}
+   {%- else -%}
+      {%- assign totalSize = totalSize | minus: 1 -%}
+   {%- endif -%}
 {%- endfor -%}
+{%- if totalSize <= 0 -%} {%- assign totalSize = 1 -%} {%- endif -%}
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
         <section id="review-suggest-section" class="c-cardText o-box review-suggest-section">
@@ -56,7 +60,11 @@ layout: default
         <section class="c-cardText o-box">
           <div class="pull-right">
             <h4 class="c-cardText__title">{{ comment[1].job_name }} | {{ comment[1].state }}</h4>
+            {%- if comment[1].date != "" || if comment[1].date != nil -%}
             <time class="gray" datetime="{{ comment[1].date | slice: 0,10 }}000">{{ comment[1].date | slice: 0,10 |  date: '%B %d, %Y' }}</time>
+            {%- else -%}
+            <small>وارد شده از سالپا</small>
+            {%- endif -%}
           </div>
           <div class="pull-left center">
             <div class="rating">
