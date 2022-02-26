@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<div class="hero lazyloaded" data-bg="/assets/bg_lg.jpg" style="background-image: url(&quot;/assets/bg_lg.jpg&quot;);">
+<div class="hero lazyloaded">
     <div class="hero__wrap">
         <h1 class="hero__title">اشتراک‌گذاری تجربه‌ی کاری با همه!</h1>
         <br/>
@@ -30,7 +30,7 @@ layout: default
   function findResults(termToMatch, pages) {
     return pages.filter(item => {
       const regex = new RegExp(termToMatch, 'gi');
-      return item.title.match(regex) || item.content.match(regex) || item.title_en.match(regex);
+      return item.title.match(regex) || item.title_en.match(regex);
     });
   }
 
