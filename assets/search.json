@@ -12,7 +12,6 @@ sitemap: false
         "title": {{ doc.title | jsonify }},
         "title_en": {{ doc.company_slug | replace: "-", " " | jsonify }},
         "city": {{ doc.city | markdownify | strip_html | jsonify }},
-        "content": {{ doc.content | markdownify | strip_html | jsonify }},
         "url": {{ site.baseurl | append: doc.url | jsonify }}
       }{%- unless forloop.last %},{%- endunless -%}
     {%- endfor -%}
