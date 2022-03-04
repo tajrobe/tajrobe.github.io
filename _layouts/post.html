@@ -57,12 +57,14 @@ layout: default
         </section>
         <h4 class="c-heading c-heading--h4">تجربه&zwnj;های کاری در {{ page.title }}</h4>
         {%- for comment in comments -%}
+        {%- if comment[1].date == '' && comment[1].rate == '' -%}
+        <section class="c-cardText o-box ribbon ribbon-left" data-ribbon="وارد شده از سالپا">
+        {%- else -%}
         <section class="c-cardText o-box">
+        {%- endif -%}
           <div class="pull-right">
             <h4 class="c-cardText__title">{{ comment[1].job_name }} | {{ comment[1].state }}</h4>
-            {%- if comment[1].date == '' -%}
-            <small>وارد شده از سالپا</small>
-            {%- else -%}
+            {%- if comment[1].date == '' -%}{%- else -%}
             <time class="gray" datetime="{{ comment[1].date | slice: 0,10 }}000">{{ comment[1].date | slice: 0,10 |  date: '%B %d, %Y' }}</time>
             {%- endif -%}
           </div>
@@ -80,10 +82,9 @@ layout: default
               <p>{{ comment[1].description | newline_to_br | strip_newlines |  replace: '<p><br></p>', ''}}</p><hr>
               {% assign pros = comment[1].pros | split: "," %}
               {% assign cons = comment[1].cons | split: "," %}
-              <p><b>مزایا: </b>{%- for pro in pros -%}<span class="label">{{pro | replace: '"', '' | replace: ']', '' | replace: '[', '' }}</span> {%- endfor -%}</p>
-              <p><b>معایب: </b>{%- for con in cons -%}<span class="label">{{con | replace: '"', '' | replace: ']', '' | replace: '[', '' }}</span> {%- endfor -%}</p>
+              {%- pros.size > 0 -%} <p><b>مزایا: </b>{%- for pro in pros -%}<span class="label">{{pro | replace: '"', '' | replace: ']', '' | replace: '[', '' }}</span> {%- endfor -%}</p>{%- endif -%}
+              {%- cons.size > 0 -%} <p><b>معایب: </b>{%- for con in cons -%}<span class="label">{{con | replace: '"', '' | replace: ']', '' | replace: '[', '' }}</span> {%- endfor -%}</p>{%- endif -%}
               <small><a href="{{ site.github }}blob/master/_data/review/{{ page.company_slug }}/{{ comment[0] }}.yml" target="_blank">پیوند یکتای این تجربه‌ی کاری</a></small>
-
            </div>
         </section>
         {%- endfor -%}
