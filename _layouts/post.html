@@ -59,7 +59,7 @@ layout: default
         {%- for comment in comments -%}
         {%- if comment[1].date == '' && comment[1].rate == '' -%}
         <section class="c-cardText o-box ribbon ribbon-left" data-ribbon="وارد شده از سالپا">
-        {%- elseif comment[1].id == '' && comment[1].date != '' && comment[1].rate != '' -%}
+        {%- elsif comment[1].id == '' && comment[1].date != '' && comment[1].rate != '' -%}
         <section class="c-cardText o-box ribbon ribbon-left" data-ribbon="وارد شده از جابینجا">
         {%- else -%}
         <section class="c-cardText o-box">
