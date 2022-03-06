@@ -26,10 +26,10 @@ layout: default
 {%- assign totalRate = 0 -%}
 {%- assign totalSize = comments | size -%}
 {%- for comment in comments -%}
-   {%- if comment[1].rate != "" or comment[1].rate != nil -%}
-      {% assign totalRate = totalRate | plus: comment[1].rate %}
-   {%- else -%}
+   {%- if comment[1].rate == '' -%}
       {%- assign totalSize = totalSize | minus: 1 -%}
+   {%- else -%}
+      {% assign totalRate = totalRate | plus: comment[1].rate %}
    {%- endif -%}
 {%- endfor -%}
 {%- if totalSize <= 0 -%} {%- assign totalSize = 1 -%} {%- endif -%}
