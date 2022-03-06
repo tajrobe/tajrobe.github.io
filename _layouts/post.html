@@ -59,7 +59,7 @@ layout: default
         {%- for comment in comments -%}
         {% assign commentDate = comment[1].date | slice: 0,10  | plus: 0 %}
         {%- if comment[1].date == '' && comment[1].rate == '' -%}
-        <section class="c-cardText o-box ribbon ribbon-left" data-ribbon="وارد شده از سالپا">
+        <section class="c-cardText o-box ribbon ribbon-left" data-ribbon="سالپا">
         {%- elsif commentDate < 1635728400 -%}
         <section class="c-cardText o-box ribbon ribbon-left" data-ribbon="جابینجا">
         {%- else -%}
