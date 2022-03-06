@@ -57,12 +57,13 @@ layout: default
         </section>
         <h4 class="c-heading c-heading--h4">تجربه&zwnj;های کاری در {{ page.title }}</h4>
         {%- for comment in comments -%}
+        {% assign commentDate = comment[1].date | slice: 0,10 %}
         {%- if comment[1].date == '' && comment[1].rate == '' -%}
         <section class="c-cardText o-box ribbon ribbon-left" data-ribbon="وارد شده از سالپا">
-        {%- elsif comment[1].id != '' && comment[1].date != '' && comment[1].rate != '' -%}
-        <section class="c-cardText o-box">        
-        {%- else -%}
+        {%- elsif commentDate < 1635728400 -%}
         <section class="c-cardText o-box ribbon ribbon-left" data-ribbon="جابینجا">
+        {%- else -%}
+        <section class="c-cardText o-box">
         {%- endif -%}
           <div class="pull-right">
             <h4 class="c-cardText__title">{{ comment[1].job_name }} | {{ comment[1].state }}</h4>
