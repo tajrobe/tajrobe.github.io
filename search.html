@@ -52,7 +52,7 @@ layout: default
     }).join('');
     if ((resultsArray.length == 0) || (this.value == '')) {
       const company = document.querySelector('#search').value;
-      resultsList.innerHTML = `<br/><p class="center">شرکت «${company}» یافت نشد، می‌خواهید «${company}» را به <a href="{{ site.github }}issues/new/choose" target="_blank">به لیست شرکت‌ها اضافه کنید؟</a></p><br/><br/><br/>`;
+      resultsList.innerHTML = `<br/><p class="center">شرکت «${company}» یافت نشد، می‌خواهید «${company}» را به <a href="{{ site.github }}issues/new?assignees=tajrobe&labels=%D8%AB%D8%A8%D8%AA+%D8%B4%D8%B1%DA%A9%D8%AA+%D8%AC%D8%AF%DB%8C%D8%AF&template=ADD_MISSING_COMPANY_TEMPLATE.md" target="_blank">به لیست شرکت‌ها اضافه کنید؟</a></p><br/><br/><br/>`;
     } else {
       resultsList.innerHTML = html;
     }
