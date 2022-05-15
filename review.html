@@ -16,7 +16,7 @@ layout: default
         <form id="review-form mb2em" method="POST" onsubmit="return checkForm(this);" action="{{ site.reviewActionUrl }}">
                 <input name="options[slug]" id="slug" type="hidden">
                 <input name="options[redirect]" id="redirect" type="hidden">
-		<input name="fields[rate]" id="correctRate" type="hidden">
+		<input name="fields[rate]" id="correctRate" type="hidden" value="3">
 		<input type="hidden" id="recaptchaField" data-parsley-errors-container="#errorContainer" data-parsley-required="true">
                 <input name="fields[agent]" id="useragent" type="hidden">
                 <label>ایمیل (منتشر نمی‌شود؛ رمزگذاری شده و امکان ویرایش این تجربه را در آینده ممکن می‌سازد.) </label>
