@@ -36,7 +36,7 @@ layout: default
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
         <section id="review-suggest-section" class="c-cardText o-box review-suggest-section">
-          <span>تجربه‌ی کار در {{ page.title }} را دارید؟</span><a id="review-suggest-section-link" class="pull-left review-suggest-section-link" href="/review?slug={{ page.company_slug }}" style="">ثبت تجربه‌ی کاری</a>
+          <span>تجربه‌ی کار در {{ page.title }} را دارید؟</span><a id="review-suggest-section-link" class="pull-left review-suggest-section-link" href="http://tajrobe.vercel.app/review/new?slug={{ page.company_slug }}&name={{ page.title }}" >ثبت تجربه‌ی کاری</a>
         </section>
         <section class="c-cardText o-box">
            <div class="pull-right">
@@ -97,4 +97,4 @@ layout: default
     {% include disqus.html %}
 </div>
 </div>
-<script>let url = new URL(window.location.href); document.querySelectorAll('time').forEach((t)=>{t.innerHTML=new Date(Number(t.getAttribute("datetime"))).toLocaleDateString('fa-IR')}); document.querySelector("#review-suggest-section-link").href += "&name=" + window.location.pathname.replaceAll("/", ""); if(url.searchParams.get("sendReview")) document.querySelector('#review-suggest-section').innerHTML = '<span>تجربه‌ی کاری شما با موفقیت ارسال شد و تا چند دقیقه‌ی دیگر، در این صفحه نمایش داده می‌شود.</span>';</script>
+<script>let url = new URL(window.location.href); document.querySelectorAll('time').forEach((t)=>{t.innerHTML=new Date(Number(t.getAttribute("datetime"))).toLocaleDateString('fa-IR')}); if(url.searchParams.get("sendReview")) document.querySelector('#review-suggest-section').innerHTML = '<span>تجربه‌ی کاری شما با موفقیت ارسال شد و تا چند دقیقه‌ی دیگر، در این صفحه نمایش داده می‌شود.</span>';</script>
