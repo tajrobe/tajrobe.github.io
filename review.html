@@ -1,136 +1,270 @@
----
-layout: default
----
-	<div class="hero lazyloaded" data-bg="/assets/bg_lg.jpg" style="background-image: url(&quot;/assets/bg_lg.jpg&quot;);min-height: 10em;height: 0;">
-    <div class="hero__wrap">
-        <h1 id="hero__title" class="hero__title">ثبت تجربه‌ی کاری برای </h1>
-    </div>
-</div>
-<div class="blog">
-<div class="container"><div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-        <section class="c-cardText o-box">
-        <script src="/assets/slimselect.min.js"></script>
-	<script src='https://www.google.com/recaptcha/api.js?onload=reCaptchaCallback&render=explicit'></script>
-    	<link rel="stylesheet" type="text/css" href="/assets/slimselect.min.css"> 
-        <form id="review-form mb2em" method="POST" onsubmit="return checkForm(this);" action="{{ site.reviewActionUrl }}">
-                <input name="options[slug]" id="slug" type="hidden">
-                <input name="options[redirect]" id="redirect" type="hidden">
-		<input name="fields[rate]" id="correctRate" type="hidden" value="3">
-		<input type="hidden" id="recaptchaField" data-parsley-errors-container="#errorContainer" data-parsley-required="true">
-                <input name="fields[agent]" id="useragent" type="hidden">
-                <label>ایمیل (منتشر نمی‌شود؛ رمزگذاری شده و امکان ویرایش این تجربه را در آینده ممکن می‌سازد.) </label>
-                <input class="review-form mb2em" type="email" required="required" name="fields[email]" placeholder="ایمیل شما">
-                <label>عنوان شغلی شما</label>
-                <input class="review-form mb2em" type="text" name="fields[job_name]" placeholder="عنوان شغلی شما (اختیاری)">
-                <label>نوع همکاری</label>
-                <select class="review-form mb2em" name="fields[state]">
-                    <option class="txt-right" selected>تمام وقت</option>
-                    <option class="txt-right">پاره وقت</option>
-                    <option class="txt-right">کارآموز</option>
-                    <option class="txt-right">قراردادی</option>
-                    <option class="txt-right">فریلنسر</option>
-                    <option class="txt-right">ریموت</option>
-                </select>
-                <label>شرح تجربه‌ی شما</label>
-                <textarea class="review-form mb2em" rows="10" required="required" name="fields[description]" placeholder="تجربه و نظر خود را به صورت مشروح بنویسید." minlength="140"></textarea>
-                <label>مزایای شرکت</label>
-                <select class="review-form mb2em" id="pros" name="fields[pros]" multiple >
-                    <option class="txt-right">بیمه</option>
-                    <option class="txt-right">بیمه تکمیلی</option>
-                    <option class="txt-right">پرداخت حقوق به موقع</option>
-                    <option class="txt-right">حقوق خوب</option>
-                    <option class="txt-right">پاداش و کارانه</option>
-                    <option class="txt-right">زمان کاری شناور</option>
-                    <option class="txt-right">امکان دورکاری</option>
-                    <option class="txt-right">مدیریت بسیار منظم</option>
-                    <option class="txt-right">تیم حرفه‌ای</option>
-                    <option class="txt-right">تیم صمیمی</option>
-                    <option class="txt-right">محیط دوستانه</option>
-                    <option class="txt-right">کادوهای مناسبتی</option>
-                    <option class="txt-right">جای پارک</option>
-                    <option class="txt-right">سرویس رفت و آمد</option>
-                    <option class="txt-right">دسترس‌پذیری خوب محل کار</option>
-                    <option class="txt-right">صبحانه رایگان</option>
-                    <option class="txt-right">ناهار رایگان</option>
-                    <option class="txt-right">خوراکی رایگان</option>
-                    <option class="txt-right">نوشیدنی رایگان</option>
-                    <option class="txt-right">حجم کاری مناسب</option>
-                    <option class="txt-right">فرهنگ سازمانی مناسب</option>
-                    <option class="txt-right">برگزاری دوره‌های آموزشی</option>
-                    <option class="txt-right">امکان یادگیری و رشد</option>
-                    <option class="txt-right">کار با آخرین تکنولوژی ها</option>
-                    <option class="txt-right">بازی رایانه ای</option>
-                    <option class="txt-right">اهمیت به دیزاین</option>
-                    <option class="txt-right">شرکت بزرگ</option>
-                </select>
-                <label>معایب شرکت</label>
-                <select class="review-form mb2em" id="cons" name="fields[cons]" multiple>
-                    <option class="txt-right">عدم توازن کار و زندگی</option>
-                    <option class="txt-right">بیمه نکردن</option>
-                    <option class="txt-right">نداشتن بیمه تکمیلی</option>
-                    <option class="txt-right">محیط غیر حرفه‌ای</option>
-                    <option class="txt-right">عدم امنیت شغلی</option>
-                    <option class="txt-right">عدم پیشرفت</option>
-                    <option class="txt-right">ساعت کاری بالا</option>
-                    <option class="txt-right">بی نظمی کاری</option>
-                    <option class="txt-right">جلسات کاری بیش از اندازه</option>
-                    <option class="txt-right">هدر دادن منابع</option>
-                    <option class="txt-right">عدم شناوری ساعت کاری</option>
-                    <option class="txt-right">عدم امکان استراحت بین کار</option>
-                    <option class="txt-right">حقوق ناکافی</option>
-                    <option class="txt-right">پایه حقوق کم</option>
-                    <option class="txt-right">عدم دریافت پاداش</option>
-                    <option class="txt-right">عدم پرداخت به موقع حقوق</option>
-                    <option class="txt-right">دریافت سفته برای قرارداد</option>
-                    <option class="txt-right">مشکلات مالی شرکت</option>
-                    <option class="txt-right">کنترل افراد با دوربین</option>
-                    <option class="txt-right">مدیریت ضعیف</option>
-                    <option class="txt-right">بد قول</option>
-                    <option class="txt-right">شرکت کوچک</option>
-                </select>
-                <label>امتیاز کلی شما به شرکت (بین 1 تا 5)</label>
-                <input class="review-form" type="range" alue="30" min="10" max="50" oninput="document.getElementById('rateValue').innerHTML=(this.value)/10; document.getElementById('correctRate').value=(this.value)/10" min="10">
-                <p id="rateValue" class="center">3</p>
-    		<input type="hidden" name="options[reCaptcha][siteKey]" value="6LerRGQdAAAAAIyOTwMY3tXsFHFKWz9EaKWP3Ozy">
-    		<input type="hidden" name="options[reCaptcha][secret]"  value="bGEJcRZKqNoga9WJDpX8yfDj/LV2SfeHEbM7/ZV+IcAs056S60B0XfHGpDr0EJcx25Hp2g8s9hgfhT2gniZNFnw5MziH2YKC9BDXfKneAkerbuppvqqNsl8F6R1wWn9/UD+Jdp2w6Mfe7rYP0ReKKKiejMyLw7z6G4q6d927M5RLpCscPHK01offzqRH4FwdkuUi1tv5Tao7sB95q9ozIYrKF2X1ZQ2TTQWs2uMvu7uBd/URK4gskzmY0EPUsgNBcMYKcnKrlZX+QZGWLgXXttJokLfcRPu/CcEEjS6Ul/wNj4e0oMTfpFlFdlwuyLK7y6TCfVLLclUCSP2E235tCA==">
-    		<div id="g-recaptcha-section" class="g-recaptcha" data-sitekey="6LerRGQdAAAAAIyOTwMY3tXsFHFKWz9EaKWP3Ozy" data-callback="recaptchaCallback"></div>
-		<span id='errorContainer'></span>
-                <input class="review-form" type="submit" name="submitButton" value="ارسال">
-		<p><br>⚠️ چنانچه در ارسال فرم مشکل دارید از فیلترشکن استفاده کنید، یا مستقیما نظر خود را در <a href="{{ site.github }}issues/new?assignees=tajrobe&labels=%D8%AB%D8%A8%D8%AA+%D8%AA%D8%AC%D8%B1%D8%A8%D9%87%E2%80%8C%DB%8C+%DA%A9%D8%A7%D8%B1%DB%8C&template=ADD_REVIEW_TEMPLATE.md"> issue گیت‌هاب</a> وارد کنید. </p>
+<!DOCTYPE html>
+<html dir="rtl" id="document" lang="fa">
+
+<head>
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="next-head-count" content="2" />
+    <link rel="preload" href="./_next/static/css/0891a8a60aa73fb6.css" as="style" />
+    <link rel="stylesheet" href="./_next/static/css/0891a8a60aa73fb6.css" data-n-g="" /><noscript
+        data-n-css=""></noscript>
+    <script defer="" nomodule="" src="./_next/static/chunks/polyfills-5cd94c89d3acac5f.js"></script>
+    <script src="./_next/static/chunks/webpack-9b0e45c24ba97727.js" defer=""></script>
+    <script src="./_next/static/chunks/framework-fc97f3f1282ce3ed.js" defer=""></script>
+    <script src="./_next/static/chunks/main-551bef8982a15171.js" defer=""></script>
+    <script src="./_next/static/chunks/pages/_app-751872d7931ccf20.js" defer=""></script>
+    <script src="./_next/static/chunks/567-bea3dd071496748e.js" defer=""></script>
+    <script src="./_next/static/chunks/49-13e2cfb40a0115e1.js" defer=""></script>
+    <script src="./_next/static/chunks/pages/review/new-b1c95d4772f8dbe8.js" defer=""></script>
+    <script src="./_next/static/_N8_90CoXPKU0JTf2JYc5/_buildManifest.js" defer=""></script>
+    <script src="./_next/static/_N8_90CoXPKU0JTf2JYc5/_ssgManifest.js" defer=""></script>
+    <script src="./_next/static/_N8_90CoXPKU0JTf2JYc5/_middlewareManifest.js" defer=""></script>
+</head>
+
+<body>
+    <div id="__next">
+        <div class="max-w-[768px] m-auto p-5">
+            <h1 class="text-xl mt-2 text-sky-800 flex flex-wrap">ثبت تجربه برای شرکت
+                <!-- --><span class="font-bold mr-1"></span>
+            </h1>
+            <form class="ant-form ant-form-horizontal ant-form-rtl mt-5">
+                <h6 class="text-xs text-gray-500">ایمیل شما رمزنگاری میشود و امکان ویرایش این تجربه در آینده را ممکن
+                    میسازد</h6>
+                <div role="row" class="ant-row ant-row-rtl ant-form-item">
+                    <div role="cell" class="ant-col ant-form-item-control ant-col-rtl">
+                        <div class="ant-form-item-control-input">
+                            <div class="ant-form-item-control-input-content"><input placeholder="ایمیل خود را وارد کنید"
+                                    id="email" class="ant-input ant-input-lg ant-input-rtl" type="text" value="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="row" class="ant-row ant-row-rtl ant-form-item">
+                    <div role="cell" class="ant-col ant-form-item-control ant-col-rtl">
+                        <div class="ant-form-item-control-input">
+                            <div class="ant-form-item-control-input-content"><input
+                                    placeholder="عنوان شغلی شما (اختیاری)" id="job_name"
+                                    class="ant-input ant-input-lg ant-input-rtl" type="text" value="" /></div>
+                        </div>
+                    </div>
+                </div>
+                <div role="row" class="ant-row ant-row-rtl ant-form-item">
+                    <div role="cell" class="ant-col ant-form-item-control ant-col-rtl">
+                        <div class="ant-form-item-control-input">
+                            <div class="ant-form-item-control-input-content">
+                                <div
+                                    class="ant-select ant-select-lg ant-select-rtl ant-select-in-form-item ant-select-single ant-select-show-arrow ant-select-show-search">
+                                    <div class="ant-select-selector"><span class="ant-select-selection-search"><input
+                                                type="search" id="state" autoComplete="off"
+                                                class="ant-select-selection-search-input" role="combobox"
+                                                aria-haspopup="listbox" aria-owns="state_list" aria-autocomplete="list"
+                                                aria-controls="state_list" aria-activedescendant="state_list_0"
+                                                value="" /></span><span class="ant-select-selection-placeholder">نوع
+                                            همکاری خود را انتخاب کنید</span></div><span class="ant-select-arrow"
+                                        style="user-select:none;-webkit-user-select:none" unselectable="on"
+                                        aria-hidden="true"><span role="img" aria-label="down"
+                                            class="anticon anticon-down ant-select-suffix"><svg viewBox="64 64 896 896"
+                                                focusable="false" data-icon="down" width="1em" height="1em"
+                                                fill="currentColor" aria-hidden="true">
+                                                <path
+                                                    d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z">
+                                                </path>
+                                            </svg></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="row" class="ant-row ant-row-rtl ant-form-item">
+                    <div role="cell" class="ant-col ant-form-item-control ant-col-rtl">
+                        <div class="ant-form-item-control-input">
+                            <div class="ant-form-item-control-input-content"><textarea rows="5" minLength="140"
+                                    placeholder="تجربه خود را به شکل کامل شرح دهید ..." id="description"
+                                    class="ant-input"></textarea></div>
+                        </div>
+                    </div>
+                </div>
+                <div role="row" class="ant-row ant-row-rtl ant-form-item">
+                    <div role="cell" class="ant-col ant-form-item-control ant-col-rtl">
+                        <div class="ant-form-item-control-input">
+                            <div class="ant-form-item-control-input-content">
+                                <div class="ant-select ant-select-lg ant-select-rtl ant-select-in-form-item ant-select-multiple ant-select-allow-clear ant-select-show-search"
+                                    style="width:100%" name="pros">
+                                    <div class="ant-select-selector">
+                                        <div class="ant-select-selection-overflow">
+                                            <div class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
+                                                style="opacity:1">
+                                                <div class="ant-select-selection-search" style="width:0"><input
+                                                        type="search" id="pros" autoComplete="off"
+                                                        class="ant-select-selection-search-input" role="combobox"
+                                                        aria-haspopup="listbox" aria-owns="pros_list"
+                                                        aria-autocomplete="list" aria-controls="pros_list"
+                                                        aria-activedescendant="pros_list_0" readonly=""
+                                                        unselectable="on" style="opacity:0" value="" /><span
+                                                        class="ant-select-selection-search-mirror" aria-hidden="true"> 
+                                                        <!-- -->
+                                                    </span></div>
+                                            </div>
+                                        </div><span class="ant-select-selection-placeholder">مزایای شرکت</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="row" class="ant-row ant-row-rtl ant-form-item">
+                    <div role="cell" class="ant-col ant-form-item-control ant-col-rtl">
+                        <div class="ant-form-item-control-input">
+                            <div class="ant-form-item-control-input-content">
+                                <div class="ant-select ant-select-lg ant-select-rtl ant-select-in-form-item ant-select-multiple ant-select-allow-clear ant-select-show-search"
+                                    style="width:100%" name="cons">
+                                    <div class="ant-select-selector">
+                                        <div class="ant-select-selection-overflow">
+                                            <div class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
+                                                style="opacity:1">
+                                                <div class="ant-select-selection-search" style="width:0"><input
+                                                        type="search" id="cons" autoComplete="off"
+                                                        class="ant-select-selection-search-input" role="combobox"
+                                                        aria-haspopup="listbox" aria-owns="cons_list"
+                                                        aria-autocomplete="list" aria-controls="cons_list"
+                                                        aria-activedescendant="cons_list_0" readonly=""
+                                                        unselectable="on" style="opacity:0" value="" /><span
+                                                        class="ant-select-selection-search-mirror" aria-hidden="true"> 
+                                                        <!-- -->
+                                                    </span></div>
+                                            </div>
+                                        </div><span class="ant-select-selection-placeholder">معایب شرکت</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center flex items-center justify-center rating-section">
+                    <h4 class="m-0 ml-4">امتیاز شما به این شرکت:</h4>
+                    <ul class="ant-rate ant-rate-rtl" tabindex="0" role="radiogroup">
+                        <li class="ant-rate-star ant-rate-star-zero">
+                            <div role="radio" aria-checked="false" aria-posinset="1" aria-setsize="5" tabindex="0">
+                                <div class="ant-rate-star-first"><span role="img" aria-label="star"
+                                        class="anticon anticon-star"><svg viewBox="64 64 896 896" focusable="false"
+                                            data-icon="star" width="1em" height="1em" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z">
+                                            </path>
+                                        </svg></span></div>
+                                <div class="ant-rate-star-second"><span role="img" aria-label="star"
+                                        class="anticon anticon-star"><svg viewBox="64 64 896 896" focusable="false"
+                                            data-icon="star" width="1em" height="1em" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z">
+                                            </path>
+                                        </svg></span></div>
+                            </div>
+                        </li>
+                        <li class="ant-rate-star ant-rate-star-zero">
+                            <div role="radio" aria-checked="false" aria-posinset="2" aria-setsize="5" tabindex="0">
+                                <div class="ant-rate-star-first"><span role="img" aria-label="star"
+                                        class="anticon anticon-star"><svg viewBox="64 64 896 896" focusable="false"
+                                            data-icon="star" width="1em" height="1em" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z">
+                                            </path>
+                                        </svg></span></div>
+                                <div class="ant-rate-star-second"><span role="img" aria-label="star"
+                                        class="anticon anticon-star"><svg viewBox="64 64 896 896" focusable="false"
+                                            data-icon="star" width="1em" height="1em" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z">
+                                            </path>
+                                        </svg></span></div>
+                            </div>
+                        </li>
+                        <li class="ant-rate-star ant-rate-star-zero">
+                            <div role="radio" aria-checked="false" aria-posinset="3" aria-setsize="5" tabindex="0">
+                                <div class="ant-rate-star-first"><span role="img" aria-label="star"
+                                        class="anticon anticon-star"><svg viewBox="64 64 896 896" focusable="false"
+                                            data-icon="star" width="1em" height="1em" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z">
+                                            </path>
+                                        </svg></span></div>
+                                <div class="ant-rate-star-second"><span role="img" aria-label="star"
+                                        class="anticon anticon-star"><svg viewBox="64 64 896 896" focusable="false"
+                                            data-icon="star" width="1em" height="1em" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z">
+                                            </path>
+                                        </svg></span></div>
+                            </div>
+                        </li>
+                        <li class="ant-rate-star ant-rate-star-zero">
+                            <div role="radio" aria-checked="false" aria-posinset="4" aria-setsize="5" tabindex="0">
+                                <div class="ant-rate-star-first"><span role="img" aria-label="star"
+                                        class="anticon anticon-star"><svg viewBox="64 64 896 896" focusable="false"
+                                            data-icon="star" width="1em" height="1em" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z">
+                                            </path>
+                                        </svg></span></div>
+                                <div class="ant-rate-star-second"><span role="img" aria-label="star"
+                                        class="anticon anticon-star"><svg viewBox="64 64 896 896" focusable="false"
+                                            data-icon="star" width="1em" height="1em" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z">
+                                            </path>
+                                        </svg></span></div>
+                            </div>
+                        </li>
+                        <li class="ant-rate-star ant-rate-star-zero">
+                            <div role="radio" aria-checked="false" aria-posinset="5" aria-setsize="5" tabindex="0">
+                                <div class="ant-rate-star-first"><span role="img" aria-label="star"
+                                        class="anticon anticon-star"><svg viewBox="64 64 896 896" focusable="false"
+                                            data-icon="star" width="1em" height="1em" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z">
+                                            </path>
+                                        </svg></span></div>
+                                <div class="ant-rate-star-second"><span role="img" aria-label="star"
+                                        class="anticon anticon-star"><svg viewBox="64 64 896 896" focusable="false"
+                                            data-icon="star" width="1em" height="1em" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z">
+                                            </path>
+                                        </svg></span></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div role="row" class="ant-row ant-row-rtl ant-form-item">
+                    <div role="cell" class="ant-col ant-form-item-control ant-col-rtl">
+                        <div class="ant-form-item-control-input">
+                            <div class="ant-form-item-control-input-content">
+                                <div style="display:flex;justify-content:center;align-items:center;margin-top:20px"
+                                    id="captcha_response"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5"><button type="submit"
+                        class="ant-btn ant-btn-primary ant-btn-lg ant-btn-rtl w-full"><span>ثبت تجربه</span></button>
+                </div>
+                <h6 class="text-xs mt-3 text-red-700">در صورت خطا در ارسال فرم لطفا با فیلتر شکن روشن مجددا امتحان
+                    فرمایید</h6>
             </form>
-        </section>
+        </div>
     </div>
-  </div>
-    <br><br>
-</div>
-</div>
-<script>
-  let url = new URL(window.location.href);
-  document.querySelector('#hero__title').append(url.searchParams.get("name").replaceAll("-", " "));
-  document.querySelector("#slug").value=url.searchParams.get("slug");
-  document.querySelector("#redirect").value="{{ site.url }}/"+url.searchParams.get("name") + "?sendReview=true";
-  document.querySelector("#useragent").value=navigator.userAgent;
-  new SlimSelect({select: '#pros', placeholder: 'انتخاب کنید...'}).selected();
-  new SlimSelect({select: '#cons', placeholder: 'انتخاب کنید...'}).selected();
-	
-let RC2KEY = "6LerRGQdAAAAAIyOTwMY3tXsFHFKWz9EaKWP3Ozy", send = false;
-function reCaptchaVerify(response) {
-        send = (grecaptcha.getResponse()) ? true : false;
-}
-function reCaptchaExpired () {}
-function reCaptchaCallback () {
-    grecaptcha.render('g-recaptcha-section', {
-        'sitekey': RC2KEY,
-        'callback': reCaptchaVerify,
-        'expired-callback': reCaptchaExpired
-    });
-}
-function checkForm(form) {
-  if (send) {
-    form.submitButton.disabled = true;
-    form.submitButton.value = "لطفا صبر کنید...";
-  }
-  return send;
-}
-</script>
+    <script id="__NEXT_DATA__"
+        type="application/json">{"props":{"pageProps":{}},"page":"/review/new","query":{},"buildId":"_N8_90CoXPKU0JTf2JYc5","nextExport":true,"autoExport":true,"isFallback":false,"scriptLoader":[]}</script>
+</body>
+
+</html>
