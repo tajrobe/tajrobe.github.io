@@ -1,4 +1,4 @@
-@font-face{font-family:Dana;src:url(/_next/static/media/DanaFaNum-Medium.d764341f.ttf) format("truetype");src:url(/_next/static/media/DanaFaNum-Medium.fab142cc.woff) format("woff");src:url(/_next/static/media/DanaFaNum-Medium.9a28d62c.woff2) format("woff2")}body{font-family:Dana,sans-serif,Arial,Helvetica!important}div[role=alert]{font-size:10px}.ant-btn-primary{background:#075985!important;border-color:#075985!important}
+@font-face{font-family:Dana;src:url(/assets/static/media/DanaFaNum-Medium.d764341f.ttf) format("truetype");src:url(/assets/static/media/DanaFaNum-Medium.fab142cc.woff) format("woff");src:url(/assets/static/media/DanaFaNum-Medium.9a28d62c.woff2) format("woff2")}body{font-family:Dana,sans-serif,Arial,Helvetica!important}div[role=alert]{font-size:10px}.ant-btn-primary{background:#075985!important;border-color:#075985!important}
 
 /*
 ! tailwindcss v3.0.24 | MIT License | https://tailwindcss.com
