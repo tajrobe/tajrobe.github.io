@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "scripts": {
+    "build": "node ./extension-data-generator.js"
+  }
+}
