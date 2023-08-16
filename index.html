@@ -12,13 +12,22 @@ layout: default
     <section class="blog">
         <div class="container">
                 <div class="row"></div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <section class="o-box">
+                        <table>
+                            <tbody id="latest-review-body">
+                                <tr><th colspan="2"><b>آخرین تجربه‌ها</b></th></tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
             	{%- assign n = paginator.posts | size -%}
                 {%- assign posts = paginator.posts | sample: n -%}	
                 {% for post in posts %}
                     <div class="col-md-4 col-lg-4 col-xl-4">
                         <a class="black-link" href="{{ site.baseurl }}{{ post.url }}"><div class="place-card place-card--small">
                                     <div class="place-card__img">
-                                <img src="/assets/company-logo.png" class="place-card__img-thumbnail" alt="Thumbnail">
+                                <img src="/assets/company-logo.png" class="place-card__img-thumbnail" alt="{{ post.title }}">
                             </div>
                             <div class="place-card__content">
                                 <h3 class="place-card__content_header">{{ post.title }}</h3>
@@ -55,3 +64,14 @@ layout: default
         </div>
     </section>
 </main>
+<script src="/assets/jalali-moment.browser-v3.3.11.js"></script>
+<script>
+let latestReviews = "";
+fetch('https://api.github.com/repos/tajrobe/tajrobe.github.io/commits?per_page=20').then(res => res.json()).then(trees => { 
+	for(let tree of trees)	
+		if(tree.commit.message.includes("/"))
+			latestReviews += "<tr><td><a href='/" + encodeURI(tree.commit.message.split("/")[1]) + "' target='_blank'>تجربه‌ی کاری جدید در شرکت " + tree.commit.message.split("/")[1].replaceAll("-", " ") + "</a></td><td><small>" + moment.from(tree.commit.committer.date, 'en').locale('fa').fromNow() + "</small></td></tr>";
+
+	document.getElementById("latest-review-body").insertAdjacentHTML('beforeend',latestReviews);
+});
+</script>
