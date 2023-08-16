@@ -21,6 +21,8 @@ layout: default
                         </table>
                     </section>
                 </div>
+		<div class="row"></div>
+		<div style="clear: both"></div>
             	{%- assign n = paginator.posts | size -%}
                 {%- assign posts = paginator.posts | sample: n -%}	
                 {% for post in posts %}
