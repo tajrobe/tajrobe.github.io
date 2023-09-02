@@ -89,6 +89,9 @@ layout: default
               <p><b>معایب: </b>{%- for con in cons -%}<span class="label">{{con | replace: '"', '' | replace: ']', '' | replace: '[', '' }}</span> {%- endfor -%}</p>{%- endif -%}
               <small><a href="{{ site.github }}blob/master/_data/review/{{ page.company_slug }}/{{ comment[0] }}.yml" target="_blank">پیوند یکتای این تجربه‌ی کاری</a></small>
            </div>
+           <div class="card-footer text-muted">
+            <small> ℹ️ این تجربه، نظر شخصی یک فرد است و الزامی بر درستی/نادرستی آن نیست.</small>
+            </div>
         </section>
         {%- endfor -%}
   </div>
