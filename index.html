@@ -71,7 +71,7 @@ layout: default
 let latestReviews = "";
 fetch('https://api.github.com/repos/tajrobe/tajrobe.github.io/commits?per_page=20').then(res => res.json()).then(trees => { 
 	for(let tree of trees)	
-		if(tree.commit.message.includes("/"))
+		if(tree.commit.message.includes("/") && !tree.commit.message.includes("/patch"))
 			latestReviews += "<tr><td><a href='/" + encodeURI(tree.commit.message.split("/")[1]) + "' target='_blank'>تجربه‌ی کاری جدید در شرکت " + tree.commit.message.split("/")[1].replaceAll("-", " ") + "</a></td><td><small>" + moment.from(tree.commit.committer.date, 'en').locale('fa').fromNow() + "</small></td></tr>";
 
 	document.getElementById("latest-review-body").insertAdjacentHTML('beforeend',latestReviews);
