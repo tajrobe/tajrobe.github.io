@@ -1,0 +1,8 @@
+_id: 8b84e70a-eaee-4a5d-97d6-fe9f9f917e1e
+email: ea2c726d71d0fd620b88b42a03799bc8
+job_name: "dsdsds"
+rate: 5
+state: تمام وقت
+agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+description: "# A first-level heading\r\n## A second-level heading\r\n### A third-level heading\r\n\r\n\r\n**#This is bold text#**\r\n\r\n**##This is bold text##**\r\n\r\n\r\nStyle\tSyntax\tKeyboard shortcut\tExample\tOutput\r\nBold\t** ** or __ __\tCommand+B (Mac) or Ctrl+B (Windows/Linux)\t**This is bold text**\tThis is bold text\r\nItalic\t* * or _ _     \tCommand+I (Mac) or Ctrl+I (Windows/Linux)\t_This text is italicized_\tThis text is italicized\r\nStrikethrough\t~~ ~~\tNone\t~~This was mistaken text~~\tThis was mistaken text\r\nBold and nested italic\t** ** and _ _\tNone\t**This text is _extremely_ important**\tThis text is extremely important\r\nAll bold and italic\t*** ***\tNone\t***All this text is important***\tAll this text is important\r\nSubscript\t<sub> </sub>\tNone\tThis is a <sub>subscript</sub> text\tThis is a subscript text\r\nSuperscript\t<sup> </sup>\tNone\tThis is a <sup>superscript</sup> text\tThis is a superscript text"
+date: 1697453709
