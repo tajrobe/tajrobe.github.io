@@ -22,7 +22,8 @@ layout: default
 </div>
 <div class="blog">
 <div class="container">
-{%- assign comments = site.data.review[page.company_slug] -%}
+{%- assign rawComments = site.data.review[page.company_slug] -%}
+{%- assign comments = rawComments | sort: 'date' | reverse -%}
 {%- assign totalRate = 0 -%}
 {%- assign totalSize = comments | size -%}
 {%- for comment in comments -%}
@@ -47,7 +48,7 @@ layout: default
               <div class="rating-upper" style="width: {{ totalRate | divided_by: totalSize | times: 20 | round: 2 }}%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
               <div class="rating-lower"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
             </div>
-            <br/><span class="gray"><small>امتیاز {{ totalRate | divided_by: totalSize | round: 2 }} ({{ totalSize }} تجربه)</small></span>
+            <br/><span class="gray"><small>امتیاز {{ totalRate | divided_by: totalSize | round: 2 }} ({{ comments.size }} تجربه)</small></span>
           </div>
            <div style="clear:both"></div>
            <div class="c-cardText__body">
