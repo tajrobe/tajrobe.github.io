@@ -22,8 +22,7 @@ layout: default
 </div>
 <div class="blog">
 <div class="container">
-{%- assign rawComments = site.data.review[page.company_slug] -%}
-{%- assign comments = rawComments | sort: 'date' | reverse -%}
+{%- assign comments = site.data.review[page.company_slug] -%}
 {%- assign totalRate = 0 -%}
 {%- assign totalSize = comments | size -%}
 {%- for comment in comments -%}
