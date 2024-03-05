@@ -22,7 +22,13 @@ layout: default
 </div>
 <div class="blog">
 <div class="container">
-{%- assign comments = site.data.review[page.company_slug] -%}
+{%- assign rawComments = site.data.review[page.company_slug] -%}
+{%- for rawComment in rawComments -%}
+   {%- if !rawComment.date -%}
+      {%- assign rawComment.date = '1' -%}
+   {%- endif -%}
+{%- endfor -%}
+{%- assign comments = rawComments | sort: 'date' | reverse -%}
 {%- assign totalRate = 0 -%}
 {%- assign totalSize = comments | size -%}
 {%- for comment in comments -%}
@@ -66,7 +72,7 @@ layout: default
         <h4 class="c-heading c-heading--h4">تجربه&zwnj;های کاری در {{ page.title }}</h4>
         {%- for comment in comments -%}
         {% assign commentDate = comment[1].date | slice: 0,10  | plus: 0 %}
-        {%- if comment[1].date == '' && comment[1].rate == '' -%}
+        {%- if comment[1].date == '1' && comment[1].rate == '' -%}
         <section class="c-cardText o-box ribbon ribbon-left" data-ribbon="سالپا">
         {%- elsif commentDate < 1635728400 -%}
         <section class="c-cardText o-box ribbon ribbon-left" data-ribbon="جابگای">
