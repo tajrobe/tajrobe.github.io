@@ -25,7 +25,7 @@ layout: default
 {%- assign rawComments = site.data.review[page.company_slug] -%}
 {%- for rawComment in rawComments -%}
    {%- if rawComment.date == null or rawComment.date == '' -%}
-      {%- assign rawComment.date = '1' -%}
+      {%- assign rawComments[forloop.index].date = '1' -%}
    {%- endif -%}
 {%- endfor -%}
 {%- assign comments = rawComments | sort: 'date' | reverse -%}
