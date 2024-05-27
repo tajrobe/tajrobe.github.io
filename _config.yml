@@ -6,7 +6,7 @@ paginate_path: /page/:num/
 paginate: 200
 disqus:
 github: https://github.com/tajrobe/tajrobe.github.io/
-reviewActionUrl: https://creepy-seal-zipper.cyclic.cloud
+reviewActionUrl: https://get-review-form.tajrobe98.workers.dev
 google_analytics:
 webmaster_verifications:
   google: 
