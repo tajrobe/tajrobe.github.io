@@ -64,7 +64,8 @@ layout: default
            </div>
         </section>
         <h4 class="c-heading c-heading--h4">تجربه&zwnj;های کاری در {{ page.title }}</h4>
-        {%- for comment in comments -%}
+        {%- assign sorted_comments = comments | sort: 'date' | reverse -%}
+        {%- for comment in sorted_comments -%}
         {% assign commentDate = comment[1].date | slice: 0,10  | plus: 0 %}
         {%- if comment[1].date == '' && comment[1].rate == '' -%}
         <section class="c-cardText o-box ribbon ribbon-left" data-ribbon="سالپا">
