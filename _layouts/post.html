@@ -64,6 +64,7 @@ layout: default
            </div>
         </section>
         <h4 class="c-heading c-heading--h4">تجربه&zwnj;های کاری در {{ page.title }}</h4>
+        <div id="sorted-section"></div>
         {%- for comment in comments -%}
         {% assign commentDate = comment[1].date | slice: 0,10  | plus: 0 %}
         {%- if comment[1].date == '' && comment[1].rate == '' -%}
@@ -108,4 +109,4 @@ layout: default
     {% include disqus.html %}
 </div>
 </div>
-<script>let url = new URL(window.location.href); document.querySelectorAll('time').forEach((t)=>{t.innerHTML=new Date(Number(t.getAttribute("datetime"))).toLocaleDateString('fa-IR')}); document.querySelector("#review-suggest-section-link").href += "&name=" + window.location.pathname.replaceAll("/", ""); if(url.searchParams.get("sendReview")) document.querySelector('#review-suggest-section').innerHTML = '<span>تجربه‌ی کاری شما با موفقیت ارسال شد و تا چند دقیقه‌ی دیگر، در این صفحه نمایش داده می‌شود. در این فاصله می‌توانید از ما <a href=/donate>حمایت کنید ❤️</a>.</span>';</script>
+<script>let datetimes=[]; let url = new URL(window.location.href); document.querySelectorAll('time').forEach((t)=>{t.innerHTML=new Date(Number(t.getAttribute("datetime"))).toLocaleDateString('fa-IR')}); document.querySelector("#review-suggest-section-link").href += "&name=" + window.location.pathname.replaceAll("/", ""); if(url.searchParams.get("sendReview")) document.querySelector('#review-suggest-section').innerHTML = '<span>تجربه‌ی کاری شما با موفقیت ارسال شد و تا چند دقیقه‌ی دیگر، در این صفحه نمایش داده می‌شود. در این فاصله می‌توانید از ما <a href=/donate>حمایت کنید ❤️</a>.</span>'; for (let datetime of document.getElementsByTagName("time")) datetimes.push(datetime.getAttribute("datetime")); if (datetimes.length > 0) for (let datetime of datetimes.sort().reverse()) document.getElementById("sorted-section").append(document.querySelector('[datetime="'+datetime+'"]').closest('section'));</script>
