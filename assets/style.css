@@ -2045,7 +2045,7 @@ select.review-form {
     font-family: inherit;
 }
 
-review-form-submit-button {
+.review-form-submit-button {
     background-color: #007bff;
     color: #ffffff;
     padding: 12px 20px;
@@ -2056,17 +2056,17 @@ review-form-submit-button {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-review-form-submit-button:hover {
+.review-form-submit-button:hover {
     background-color: #0056b3;
     transform: scale(1.05);
 }
 
-review-form-submit-button:active {
+.review-form-submit-button:active {
     background-color: #004494;
     transform: scale(0.98);
 }
 
-review-form-submit-button:disabled {
+.review-form-submit-button:disabled {
     background-color: #b0c4de;
     cursor: not-allowed;
     opacity: 0.6;
