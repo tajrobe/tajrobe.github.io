@@ -35,7 +35,7 @@ sitemap: false
       { doc.logo | jsonify
       }
     },
-    "logo": {
+    "cover": {
       { doc.cover | jsonify
       }
     }
