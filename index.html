@@ -4,62 +4,76 @@ layout: default
 <div class="hero lazyloaded" data-bg="/assets/bg_lg.jpg" style="background-image: url(&quot;/assets/bg_lg.jpg&quot;);">
     <div class="hero__wrap">
         <h1 class="hero__title">اشتراک‌گذاری تجربه‌ی کاری با همه!</h1>
-        <br/>
+        <br />
         <h2 class="hero-search" onclick="window.location.href='/search'">جستجوی نام شرکت مورد نظر...</h2>
     </div>
 </div>
 <main class="site__content">
     <section class="blog">
-        <div class="container">
-                <div class="row"></div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <section class="o-box">
-                        <table>
-                            <tbody id="latest-review-body">
-                                <tr><th colspan="2"><b>آخرین تجربه‌ها</b></th></tr>
-                            </tbody>
-                        </table>
-                    </section>
-                </div>
-		<div class="row"></div>
-		<div style="clear: both"></div>
-            	{%- assign n = paginator.posts | size -%}
-                {%- assign posts = paginator.posts | sample: n -%}	
-                {% for post in posts %}
-                    <div class="col-md-4 col-lg-4 col-xl-4">
-                        <a class="black-link" href="{{ site.baseurl }}{{ post.url }}"><div class="place-card place-card--small">
-                                    <div class="place-card__img">
-                                <img src="/assets/company-logo.png" class="place-card__img-thumbnail" alt="{{ post.title }}">
-                            </div>
-                            <div class="place-card__content">
-                                <h3 class="place-card__content_header">{{ post.title }}</h3>
-                                <p class="mb-0"><i class="fa fa-map-marker"></i> <span class="text-muted">{{ post.city }}</span></p>
-                                
-                            </div>
-                        </div></a>
+        <div class="container-fluid">
+            <div class="row"></div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <section class="o-box">
+                    <table>
+                        <tbody id="latest-review-body">
+                            <tr>
+                                <th colspan="2"><b>آخرین تجربه‌ها</b></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+            <div class="row"></div>
+            <div style="clear: both"></div>
+            {%- assign n = paginator.posts | size -%}
+            {%- assign posts = paginator.posts | sample: n -%}
+            {% for post in posts %}
+            <div class="col-md-2 col-lg-2 col-xl-2">
+                <a class="black-link" href="{{ site.baseurl }}{{ post.url }}">
+                    <div class="place-card place-card--small">
+                        <div class="place-card__img">
+                            <img src="${post.logo || '/assets/company-logo.png'}" class="place-card__img-thumbnail"
+                                alt="{{ post.title }}">
+                        </div>
+                        <div class="place-card__content">
+                            <h3 class="place-card__content_header">{{ post.title }}</h3>
+                            <p class="mb-0"><i class="fa fa-map-marker"></i> <span class="text-muted">{{ post.city
+                                    }}</span></p>
+
+                        </div>
                     </div>
-                {% endfor %}
+                </a>
+            </div>
+            {% endfor %}
             <div style="clear: both"></div>
             {% if paginator.total_pages > 1 %}
             <ul class="pagination justify-content-center flex-wrap">
                 {% if paginator.previous_page %}
-                <li class="page-item"><a class="page-link" href="{{ paginator.previous_page_path | relative_url }}"><span aria-hidden="true">&laquo; </span></a></li>
+                <li class="page-item"><a class="page-link"
+                        href="{{ paginator.previous_page_path | relative_url }}"><span aria-hidden="true">&laquo;
+                        </span></a></li>
                 {% else %}
-                <li class="page-item disabled"><a class="page-link" href="{{ paginator.previous_page_path | relative_url }}"><span aria-hidden="true">&laquo; </span></a></li>
+                <li class="page-item disabled"><a class="page-link"
+                        href="{{ paginator.previous_page_path | relative_url }}"><span aria-hidden="true">&laquo;
+                        </span></a></li>
                 {% endif %}
                 {% for page in (1..paginator.total_pages) %}
                 {% if page == paginator.page %}
-                <li class="page-item active"><a class="page-link" href="#" >{{ page }}</a></li>
+                <li class="page-item active"><a class="page-link" href="#">{{ page }}</a></li>
                 {% elsif page == 1 %}
                 <li class="page-item"><a class="page-link" href="{{ '/' | relative_url }}">{{ page }}</a></li>
                 {% else %}
-                <li class="page-item "><a class="page-link" href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a></li>
+                <li class="page-item "><a class="page-link"
+                        href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a></li>
                 {% endif %}
                 {% endfor %}
                 {% if paginator.next_page %}
-                <li class="page-item"><a class="page-link" href="{{ paginator.next_page_path | relative_url }}"><span aria-hidden="true"> &raquo;</span></a></li>
+                <li class="page-item"><a class="page-link" href="{{ paginator.next_page_path | relative_url }}"><span
+                            aria-hidden="true"> &raquo;</span></a></li>
                 {% else %}
-                <li class="page-item disabled"><a class="page-link" href="{{ paginator.previous_page_path | relative_url }}"><span aria-hidden="true"> &raquo;</span></a></li>
+                <li class="page-item disabled"><a class="page-link"
+                        href="{{ paginator.previous_page_path | relative_url }}"><span aria-hidden="true">
+                            &raquo;</span></a></li>
                 {% endif %}
             </ul>
             {% endif %}
@@ -68,12 +82,12 @@ layout: default
 </main>
 <script src="/assets/jalali-moment.browser-v3.3.11.js"></script>
 <script>
-let latestReviews = "";
-fetch('https://api.github.com/repos/tajrobe/tajrobe.github.io/commits?per_page=20').then(res => res.json()).then(trees => { 
-	for(let tree of trees)	
-		if(tree.commit.message.includes("/") && !tree.commit.message.includes("/patch"))
-			latestReviews += "<tr><td><a href='/" + encodeURI(tree.commit.message.split("/")[1]) + "' target='_blank'>تجربه‌ی کاری جدید در شرکت " + tree.commit.message.split("/")[1].replaceAll("-", " ") + "</a></td><td><small>" + moment.from(tree.commit.committer.date, 'en').locale('fa').fromNow() + "</small></td></tr>";
+    let latestReviews = "";
+    fetch('https://api.github.com/repos/tajrobe/tajrobe.github.io/commits?per_page=20').then(res => res.json()).then(trees => {
+        for (let tree of trees)
+            if (tree.commit.message.includes("/") && !tree.commit.message.includes("/patch"))
+                latestReviews += "<tr><td><a href='/" + encodeURI(tree.commit.message.split("/")[1]) + "' target='_blank'>تجربه‌ی کاری جدید در شرکت " + tree.commit.message.split("/")[1].replaceAll("-", " ") + "</a></td><td><small>" + moment.from(tree.commit.committer.date, 'en').locale('fa').fromNow() + "</small></td></tr>";
 
-	document.getElementById("latest-review-body").insertAdjacentHTML('beforeend',latestReviews);
-});
+        document.getElementById("latest-review-body").insertAdjacentHTML('beforeend', latestReviews);
+    });
 </script>
