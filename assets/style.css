@@ -1596,26 +1596,37 @@ input {
 }
 
 .place-card {
-    background: #fff;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
     margin-bottom: 25px;
-    border-radius: 5px;
     overflow: hidden;
     display: flex;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, .1)
+}
+
+.place-card:hover {
+    transform: translateY(-5px);
 }
 
 .place-card__img {
-    width: 30%
+    width: 30%;
+    border-bottom: 2px solid #f1f1f1;
 }
 
 .place-card__img-thumbnail {
     height: 100%;
     width: 100%;
-    object-fit: cover
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.place-card__img-thumbnail:hover {
+    opacity: 0.8;
 }
 
 .place-card__content {
-    padding: 25px;
+    padding: 15px;
     width: 70%
 }
 
@@ -1625,13 +1636,26 @@ input {
     justify-content: space-between;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis
+    text-overflow: ellipsis;
+    color: #333;
 }
 
 .place-card__content_header .place-title {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden
+}
+
+.place-card__content p {
+    font-size: 0.875rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+}
+
+.place-card__content i {
+    margin-right: 5px;
+    color: #5c5c5c;
 }
 
 .rating-box {
