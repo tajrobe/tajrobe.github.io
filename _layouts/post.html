@@ -1,23 +1,21 @@
 ---
 layout: default
 ---
-<div class="hero lazyloaded" data-bg="{{ page.cover | default: '/assets/bg_lg.jpg' }}">
-   <div class="p-header post-header">
-      <div class="post-cover">
-         <div class="coverContainer container u-clearFix">
-            <div class="coverContainerInner">
-               <img class="logo-section logo-img" src="{{ post.logo | default: '/assets/company-logo.png' }}">
-               <div class="c-info">
-                  <h2 class="c-name">{{ page.title }}</h2>
-                  <div class="c-meta">
-                     <span class="c-metaItem">{{ page.industry }}</span>
-                     <span class="c-metaItem">{{ page.size }}</span>
-                     <span class="c-metaItem">
-                        <a class="c-metaLink" rel="nofollow" href="{{ page.site }}" target="_blank">{{ page.site }}</a>
-                     </span>
-                  </div>
+<div class="p-header post-header">
+   <div class="post-cover">
+      <div class="coverContainer container u-clearFix">
+         <div class="coverContainerInner">
+            <img class="logo-section logo-img" src="{{ post.logo | default: '/assets/company-logo.png' }}">
+            <div class="c-info">
+               <h2 class="c-name">{{ page.title }}</h2>
+               <div class="c-meta">
+                  <span class="c-metaItem">{{ page.industry }}</span>
+                  <span class="c-metaItem">{{ page.size }}</span>
+                  <span class="c-metaItem">
+                     <a class="c-metaLink" rel="nofollow" href="{{ page.site }}" target="_blank">{{ page.site }}</a>
+                  </span>
                </div>
-            </div>`
+            </div>
          </div>
       </div>
    </div>
