@@ -2,24 +2,25 @@
 layout: default
 ---
 <div class="hero lazyloaded">
-    <div class="hero__wrap">
-        <h1 class="hero__title">اشتراک‌گذاری تجربه‌ی کاری با همه!</h1>
-        <br/>
-        <h2 class="hero-search"><input class="input" id="search" type="search" name="search" autocomplete="off" placeholder="جستجوی نام شرکت مورد نظر..."></h2>
-    </div>
+  <div class="hero__wrap">
+    <h1 class="hero__title">اشتراک‌گذاری تجربه‌ی کاری با همه!</h1>
+    <br />
+    <h2 class="hero-search"><input class="input" id="search" type="search" name="search" autocomplete="off"
+        placeholder="جستجوی نام شرکت مورد نظر..."></h2>
+  </div>
 </div>
 <main class="site__content">
-    <section class="blog">
-        <div class="container">
-                <div class="row"></div>
-                <div id="list">
-                    
-                </div>
-            <div style="clear: both"></div>
-        </div>
-    </section>
+  <section class="blog">
+    <div class="container">
+      <div class="row"></div>
+      <div id="list">
+
+      </div>
+      <div style="clear: both"></div>
+    </div>
+  </section>
 </main>
-<script type="text/javascript" src="{{ "/assets/fetch.js" | relative_url }}"></script>
+<script type="text/javascript" src="{{ " /assets/fetch.js" | relative_url }}"></script>
 <script type="text/javascript">
   const endpoint = '{{ "/assets/search.json" | relative_url }}';
   const pages = [];
@@ -41,7 +42,7 @@ layout: default
       <div class="col-md-4 col-lg-4 col-xl-4">
         <a class="black-link" href="${item.url}"><div class="place-card place-card--small">
                     <div class="place-card__img">
-                <img src="/assets/company-logo.png" class="place-card__img-thumbnail" alt="Thumbnail">
+                <img src="${item.logo || '/assets/company-logo.png'}" class="place-card__img-thumbnail" alt="Thumbnail">
             </div>
             <div class="place-card__content">
                 <h3 class="place-card__content_header">${item.title}</h3>
@@ -60,7 +61,7 @@ layout: default
   const field = document.querySelector('#search');
   const resultsList = document.querySelector('#list');
   field.addEventListener('keyup', displayResults);
-  field.addEventListener('keydown', function(event) {
+  field.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
       event.preventDefault();
     }
