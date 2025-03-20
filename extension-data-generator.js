@@ -2,18 +2,18 @@ const fs = require('fs/promises')
 const path = require('path')
 const yaml = require('js-yaml')
 
-async function getReview(filePath) {
+async function getReview (filePath) {
   const rawReview = await fs.readFile(filePath, 'utf-8')
   return yaml.load(rawReview)
 }
 
-function calculateRate(reviews) {
+function calculateRate (reviews) {
   return (
     reviews.reduce((acc, curr) => acc + parseInt(curr.rate), 0) / reviews.length
   )
 }
 
-async function getReviewsDataFromFile(companyName) {
+async function getReviewsDataFromFile (companyName) {
   try {
     const reviewsDirectoryPath = path.resolve(
       __dirname,
@@ -35,8 +35,8 @@ async function getReviewsDataFromFile(companyName) {
   }
 }
 
-async function getCompanyDataFromFile(fileName) {
-  const filePath = path.resolve(__dirname, '_companies', fileName)
+async function getCompanyDataFromFile (fileName) {
+  const filePath = path.resolve(__dirname, '_posts', fileName)
   const data = await fs.readFile(filePath, 'utf-8')
   const [, companyYamlData] = /---\r?\n((?:.|\r?\n)*?)\r?\n---/gim.exec(data)
   const companyData = yaml.load(companyYamlData)
@@ -48,15 +48,15 @@ async function getCompanyDataFromFile(fileName) {
   }
 }
 
-async function findCompanies() {
-  const companiesFileNamesPath = path.resolve(__dirname, '_companies')
+async function findCompanies () {
+  const companiesFileNamesPath = path.resolve(__dirname, '_posts')
   const companiesFileNames = await fs.readdir(companiesFileNamesPath, {
     encoding: 'utf-8'
   })
   return Promise.all(companiesFileNames.map(getCompanyDataFromFile))
 }
 
-async function main() {
+async function main () {
   const companies = await findCompanies()
   await fs.writeFile(
     path.resolve(__dirname, 'assets', 'extension-resource.json'),
