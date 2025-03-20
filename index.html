@@ -11,40 +11,42 @@ layout: default
 <main class="site__content">
     <section class="blog">
         <div class="container-fluid">
-            <div class="row"></div>
-            <div class="col-xs-12 col-sm-4 col-md-4">
-                <section class="o-box">
-                    <table>
-                        <tbody id="latest-review-body">
-                            <tr>
-                                <th colspan="2"><b>آخرین تجربه‌ها</b></th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-            </div>
-            <div class="row"></div>
-            <div style="clear: both"></div>
-            {%- assign n = paginator.posts | size -%}
-            {%- assign posts = paginator.posts | sample: n -%}
-            {% for post in posts limit: 20 %}
-            <div class="col-md-2 col-lg-2 col-xl-2">
-                <a class="black-link" href="{{ site.baseurl }}{{ post.url }}">
-                    <div class="place-card place-card--small">
-                        <div class="place-card__img">
-                            <img src="{{ post.logo | default: '/assets/company-logo.png' }}" class="place-card__img-thumbnail"
-                                alt="{{ post.title }}">
-                        </div>
-                        <div class="place-card__content">
-                            <h3 class="place-card__content_header">{{ post.title }}</h3>
-                            <p class="mb-0"><i class="fa fa-map-marker"></i> <span class="text-muted">{{ post.city
-                                    }}</span></p>
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <section class="o-box">
+                        <table>
+                            <tbody id="latest-review-body">
+                                <tr>
+                                    <th colspan="2"><b>آخرین تجربه‌ها</b></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+                <div class="col-md-8">
+                    {%- assign n = paginator.posts | size -%}
+                    {%- assign posts = paginator.posts | sample: n -%}
+                    {% for post in posts limit: 20 %}
+                    <div class="col-md-4 col-lg-4 col-xl-4">
+                        <a class="black-link" href="{{ site.baseurl }}{{ post.url }}">
+                            <div class="place-card place-card--small">
+                                <div class="place-card__img">
+                                    <img src="{{ post.logo | default: '/assets/company-logo.png' }}"
+                                        class="place-card__img-thumbnail" alt="{{ post.title }}">
+                                </div>
+                                <div class="place-card__content">
+                                    <h3 class="place-card__content_header">{{ post.title }}</h3>
+                                    <p class="mb-0"><i class="fa fa-map-marker"></i> <span class="text-muted">{{
+                                            post.city
+                                            }}</span></p>
 
-                        </div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
+                    {% endfor %}
+                </div>
             </div>
-            {% endfor %}
             <div style="clear: both"></div>
             {% if paginator.total_pages > 1 %}
             <ul class="pagination justify-content-center flex-wrap">
