@@ -32,7 +32,7 @@ layout: default
                 <a class="black-link" href="{{ site.baseurl }}{{ post.url }}">
                     <div class="place-card place-card--small">
                         <div class="place-card__img">
-                            <img src="${post.logo || '/assets/company-logo.png'}" class="place-card__img-thumbnail"
+                            <img src="{{ post.logo | default: '/assets/company-logo.png' }}" class="place-card__img-thumbnail"
                                 alt="{{ post.title }}">
                         </div>
                         <div class="place-card__content">
