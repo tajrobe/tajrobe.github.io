@@ -1753,8 +1753,9 @@ input {
 
 .post-cover {
     height: 210px;
+    background-image: url('/assets/bg_lg.jpg');
     background-size: cover;
-    background-position: 50%;
+    background-position: center;
     position: relative;
 }
 

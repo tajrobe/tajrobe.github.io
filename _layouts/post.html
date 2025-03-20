@@ -2,7 +2,8 @@
 layout: default
 ---
 <div class="p-header post-header">
-   <div class="post-cover" data-bg="{{ page.cover | default: '/assets/bg_lg.jpg' }}">
+   <div class="post-cover" 
+     {% if post.cover %}style="background-image: url('{{ post.cover }}');"{% endif %}>
       <div class="coverContainer container u-clearFix">
          <div class="coverContainerInner">
             <img class="logo-section logo-img" src="{{ page.logo | default: '/assets/company-logo.png' }}">
