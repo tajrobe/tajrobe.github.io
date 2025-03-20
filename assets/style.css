@@ -1757,7 +1757,6 @@ input {
     background-size: cover;
     background-position: 50%;
     position: relative;
-    background: #565b70
 }
 
 .post-cover:before {
@@ -2101,17 +2100,42 @@ select.review-form {
 }
 
 .review-suggest-section {
-    background: rgb(221, 244, 255);
-    border-color: #a6d9ff;
+    background: #e3f2fd;
+    border: 1px solid #90caf9;
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
 }
 
 .review-suggest-section-link {
-    padding: 5px;
-    margin: -5px;
-    background: #2da44e;
-    border: 1px solid rgb(192, 212, 222);
+    display: inline-block;
+    padding: 8px 12px;
+    margin-left: 10px;
+    background: #007bff;
+    border: 1px solid #0056b3;
     font-family: inherit;
     color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.review-suggest-section span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #004085;
+}
+
+.review-suggest-section-link:hover {
+    background: #0056b3;
+    border-color: #004494;
+    transform: scale(1.05);
+}
+
+.review-suggest-section-link:active {
+    background: #003b80;
+    transform: scale(0.98);
 }
 
 @media (max-width:768px) {
