@@ -1895,28 +1895,28 @@ input {
     padding: .5rem .75rem;
     margin-left: -1px;
     line-height: 1.25;
-    color: #3194c3;
+    color: #007bff;
     background-color: #fff;
-    border: 1px solid #dee2e6
+    border: 1px solid #dee2e6;
 }
 
 .page-link:hover {
     z-index: 2;
-    color: #ff859b;
+    color: #ffffff;
     text-decoration: none;
-    background-color: #e9ecef;
-    border-color: #dee2e6
+    background-color: #0056b3;
+    border-color: #0056b3;
 }
 
 .page-link:focus {
     z-index: 2;
     outline: 0;
-    -webkit-box-shadow: 0 0 0 .2rem rgba(255, 133, 155, .25);
-    box-shadow: 0 0 0 .2rem rgba(255, 133, 155, .25)
+    -webkit-box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
 }
 
 .page-link:not(:disabled):not(.disabled) {
-    cursor: pointer
+    cursor: pointer;
 }
 
 .page-item:first-child .page-link {
@@ -1933,16 +1933,16 @@ input {
 .page-item.active .page-link {
     z-index: 1;
     color: #fff;
-    background-color: #ff859b;
-    border-color: #ff859b
+    background-color: #007bff;
+    border-color: #007bff;
 }
 
 .page-item.disabled .page-link {
     color: #6c757d;
     pointer-events: none;
-    cursor: auto;
-    background-color: #fff;
-    border-color: #dee2e6
+    cursor: not-allowed;
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
 }
 
 .pagination-lg .page-link {

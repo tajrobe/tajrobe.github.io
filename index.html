@@ -10,7 +10,7 @@ layout: default
 </div>
 <main class="site__content">
     <section class="blog">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-4">
                     <section class="o-box">
@@ -26,7 +26,7 @@ layout: default
                 <div class="col-md-8">
                     {%- assign n = paginator.posts | size -%}
                     {%- assign posts = paginator.posts | sample: n -%}
-                    {% for post in posts limit: 20 %}
+                    {% for post in posts limit: 15 %}
                     <div class="col-md-4 col-lg-4 col-xl-4">
                         <a class="black-link" href="{{ site.baseurl }}{{ post.url }}">
                             <div class="place-card place-card--small">
