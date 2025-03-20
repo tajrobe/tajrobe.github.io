@@ -2,7 +2,7 @@
 layout: default
 ---
 <div class="p-header post-header">
-   <div class="post-cover">
+   <div class="post-cover" data-bg="{{ page.cover | default: '/assets/bg_lg.jpg' }}">
       <div class="coverContainer container u-clearFix">
          <div class="coverContainerInner">
             <img class="logo-section logo-img" src="{{ page.logo | default: '/assets/company-logo.png' }}">
