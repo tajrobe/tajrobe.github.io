@@ -1369,25 +1369,31 @@ footer a:hover {
     position: relative;
     background-color: #dde5ea;
     background-repeat: no-repeat;
-    background-position: 50%;
-    background-size: cover
+    background-position: center;
+    background-size: cover;
+}
+
+@media only screen and (max-width: 48em) {
+    .hero {
+        min-height: 12rem;
+        background-size: contain;
+    }
 }
 
 @media only screen and (min-width:62em) {
     .hero {
-        margin: 0 auto;
-        height: 18em
+        height: 18em;
     }
 }
 
 .hero::before {
     position: absolute;
-    display: block;
     content: "";
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .hero__wrap {
