@@ -1376,7 +1376,7 @@ footer a:hover {
 @media only screen and (max-width: 48em) {
     .hero {
         min-height: 12rem;
-        background-size: contain;
+        font-size: xx-small;
     }
 }
 
@@ -1763,34 +1763,46 @@ input {
     background-size: cover;
     background-position: center;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
 }
 
-.post-cover:before {
-    display: block;
+.post-cover::before {
+    content: "";
     position: absolute;
+    top: 0;
     right: 0;
     left: 0;
-    top: 0;
     bottom: 0;
-    content: ""
+    background: rgba(0, 0, 0, 0.5);
 }
 
-.post-header .post-cover:before {
-    opacity: .5
+@media only screen and (max-width: 768px) {
+    .post-cover {
+        min-height: 150px;
+    }
+
+    .c-info h2 {
+        font-size: 1.25rem;
+    }
+
+    .c-metaItem {
+        font-size: 0.875rem;
+    }
 }
 
 .coverContainer {
     position: relative;
-    height: 100%;
-    padding-left: 0;
-    padding-right: 0
+    z-index: 2;
+    text-align: center;
 }
 
 .coverContainerInner {
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 0
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .logo-section {
@@ -1806,8 +1818,8 @@ input {
 }
 
 .logo-img {
-    display: block;
-    height: 100%
+    max-width: 80px;
+    height: auto;
 }
 
 .c-name {
@@ -1818,18 +1830,13 @@ input {
 }
 
 .c-info {
-    padding-bottom: 15px;
-    text-align: center;
-    text-shadow: 0 1px 0 #000;
-    color: #fff
+    text-align: left;
 }
 
 .c-metaItem {
-    color: hsla(0, 0%, 100%, .9);
-    font-size: 12px;
-    height: 30px;
-    line-height: 30px;
-    margin-left: 20px
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .c-metaLink,
