@@ -5,6 +5,12 @@
     font-weight: 400
 }
 
+html {
+    line-height: 1.15;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
+}
+
 body {
     direction: rtl;
 }
@@ -1082,14 +1088,18 @@ body {
 
     .review-suggest-section {
         display: flex;
-    }
-
-    .review-suggest-section-link {
-        text-align: center;
+        justify-content: space-evenly;
+        align-items: baseline;
     }
 }
 
 @media (min-width:480px) {
+    .review-suggest-section {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: baseline;
+    }
+
     .logo-section {
         display: block;
         padding: 5px;
@@ -1196,21 +1206,6 @@ body {
 
 .affix {
     position: fixed
-}
-
-.o-box {
-    background-color: #fff;
-    border: 1px solid #d0d0d0;
-    margin-bottom: 20px;
-    position: relative;
-    -webkit-border-radius: 3px;
-    border-radius: 3px
-}
-
-html {
-    line-height: 1.15;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%
 }
 
 footer,
@@ -1777,7 +1772,55 @@ input {
 }
 
 .c-cardText-body {
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.o-box {
+    background-color: #fff;
+    border: 1px solid #d0d0d0;
+    margin-bottom: 20px;
+    position: relative;
+    -webkit-border-radius: 3px;
+    border-radius: 3px
+}
+
+
+.review-suggest-section {
+    background: #e3f2fd;
+    border: 1px solid #90caf9;
+    padding: 12px;
+}
+
+.review-suggest-section-link {
+    padding: 8px 12px;
+    margin-left: 10px;
+    background: #007bff;
+    border: 1px solid #0056b3;
+    font-family: inherit;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.review-suggest-section span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #004085;
+}
+
+.review-suggest-section-link:hover {
+    background: #0056b3;
+    border-color: #004494;
+    transform: scale(1.05);
+}
+
+.review-suggest-section-link:active {
+    background: #003b80;
+    transform: scale(0.98);
 }
 
 .post-header {
@@ -2076,45 +2119,6 @@ select.review-form {
 
 .mb2em {
     margin-bottom: 2em
-}
-
-.review-suggest-section {
-    background: #e3f2fd;
-    border: 1px solid #90caf9;
-    padding: 12px;
-    border-radius: 6px;
-    text-align: center;
-}
-
-.review-suggest-section-link {
-    display: inline-block;
-    padding: 8px 12px;
-    margin-left: 10px;
-    background: #007bff;
-    border: 1px solid #0056b3;
-    font-family: inherit;
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.review-suggest-section span {
-    font-size: 16px;
-    font-weight: bold;
-    color: #004085;
-}
-
-.review-suggest-section-link:hover {
-    background: #0056b3;
-    border-color: #004494;
-    transform: scale(1.05);
-}
-
-.review-suggest-section-link:active {
-    background: #003b80;
-    transform: scale(0.98);
 }
 
 .ribbon {
