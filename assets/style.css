@@ -1082,10 +1082,6 @@ body {
         font-size: 1.25rem;
     }
 
-    .c-metaItem {
-        font-size: 0.875rem;
-    }
-
     .review-suggest-section {
         display: flex;
         justify-content: space-evenly;
@@ -1875,8 +1871,15 @@ input {
 }
 
 .logo-img {
-    max-width: 80px;
-    height: auto;
+    display: block;
+    height: 100%;
+}
+
+.c-info {
+    padding-bottom: 15px;
+    text-align: center;
+    text-shadow: 0 1px 0 #000;
+    color: #fff
 }
 
 .c-name {
@@ -1886,14 +1889,12 @@ input {
     color: #fff
 }
 
-.c-info {
-    text-align: left;
-}
-
 .c-metaItem {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    color: hsla(0, 0%, 100%, .9);
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 20px
 }
 
 .c-metaLink,
