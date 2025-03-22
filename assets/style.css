@@ -1036,11 +1036,6 @@ html {
     -webkit-text-size-adjust: 100%
 }
 
-body {
-    margin: 0;
-    direction: rtl
-}
-
 footer,
 header,
 nav,
@@ -1457,10 +1452,7 @@ h1 {
 }
 
 .header-container {
-    margin: 0 auto;
-    padding: 0 10px;
     width: 100%;
-    direction: rtl;
     text-align: justify;
     flex: 1 0 auto
 }
