@@ -5,6 +5,10 @@
     font-weight: 400
 }
 
+body{
+    direction: rtl;
+}
+
 .row {
     padding-top: 2em;
     margin-right: -15px;
