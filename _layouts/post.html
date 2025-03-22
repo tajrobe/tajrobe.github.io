@@ -51,7 +51,7 @@ layout: default
                </section>
                <section class="c-cardText o-box">
                   <div class="pull-right">
-                     <h4 class="c-cardText__title">معرفی شرکت</h4>
+                     <h4 class="c-cardText-title">معرفی شرکت</h4>
                   </div>
                   <div class="pull-left center">
                      <div class="rating">
@@ -66,7 +66,7 @@ layout: default
                            comments.size }} تجربه)</small></span>
                   </div>
                   <div style="clear:both"></div>
-                  <div class="c-cardText__body">
+                  <div class="c-cardText-body">
                      <p>{{ content }}</p>
                      <small><a href="{{ site.github }}blob/master/{{ page.path }}" target="_blank">ویرایش اطلاعات
                            شرکت</a></small>
@@ -84,7 +84,7 @@ layout: default
                      <section class="c-cardText o-box">
                         {%- endif -%}
                         <div class="pull-right">
-                           <h4 class="c-cardText__title">{{ comment[1].job_name }} | {{ comment[1].state }}</h4>
+                           <h4 class="c-cardText-title">{{ comment[1].job_name }} | {{ comment[1].state }}</h4>
                            {%- if comment[1].date == '' -%}{%- else -%}
                            <time class="gray" datetime="{{ comment[1].date | slice: 0,10 }}000">{{ comment[1].date |
                               slice: 0,10 | date: '%B %d, %Y' }}</time>
@@ -104,7 +104,7 @@ layout: default
                            {%- endif -%}
                         </div>
                         <div style="clear:both"></div>
-                        <div class="c-cardText__body">
+                        <div class="c-cardText-body">
                            <p>{{ comment[1].description | newline_to_br | strip_newlines | replace: '
                            <p><br></p>', ''}}</p>
                            <hr>
