@@ -1245,6 +1245,10 @@ a:hover {
     .hero {
         height: 18em;
     }
+
+    .post-cover {
+        height: 18em;
+    }
 }
 
 @media only screen and (min-width:75em) {
@@ -1399,6 +1403,11 @@ footer a:hover {
 
 @media only screen and (max-width: 48em) {
     .hero {
+        min-height: 12rem;
+        font-size: xx-small;
+    }
+
+    .post-header {
         min-height: 12rem;
         font-size: xx-small;
     }
@@ -1745,28 +1754,30 @@ input {
     margin-bottom: 20px
 }
 
-.p-header {
-    position: relative
+.post-header {
+    position: relative;
+}
+
+.post-header .post-cover:before {
+    opacity: .5;
 }
 
 .post-cover {
-    height: 210px;
+    min-height: 16.25rem;
     background-image: url('/assets/bg_lg.jpg');
+    background-size: cover;
     background-position: center;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
 }
 
 .post-cover::before {
-    content: "";
+    display: block;
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
+    content: "";
     background: rgba(0, 0, 0, 0.5);
 }
 
