@@ -1214,12 +1214,36 @@ a:hover {
         margin: 0 auto;
         max-width: 720px
     }
+
+    .hero__wrap {
+        max-width: 40em
+    }
+
+    .hero__wrap .hero__title {
+        padding: 1rem 0;
+        font-size: 2.625em;
+        line-height: 3.125rem
+    }
+
+    .post-card {
+        width: 48.4375%;
+        margin-left: 3.125%
+    }
+
+    .post-card:last-of-type,
+    .post-card:nth-child(2n+2) {
+        margin-left: 0
+    }
 }
 
 @media only screen and (min-width:62em) {
     .container {
         margin: 0 auto;
         max-width: 960px
+    }
+
+    .hero {
+        height: 18em;
     }
 }
 
@@ -1380,12 +1404,6 @@ footer a:hover {
     }
 }
 
-@media only screen and (min-width:62em) {
-    .hero {
-        height: 18em;
-    }
-}
-
 .hero::before {
     position: absolute;
     content: "";
@@ -1410,23 +1428,9 @@ footer a:hover {
     z-index: 1
 }
 
-@media only screen and (min-width:48em) {
-    .hero__wrap {
-        max-width: 40em
-    }
-}
-
 .hero__wrap .hero__title {
     font-size: 1.8em;
     color: #fff
-}
-
-@media only screen and (min-width:48em) {
-    .hero__wrap .hero__title {
-        padding: 1rem 0;
-        font-size: 2.625em;
-        line-height: 3.125rem
-    }
 }
 
 .blog {
@@ -1441,18 +1445,6 @@ h1 {
 
 .dark-bg {
     background-color: #313237
-}
-
-@media only screen and (min-width:48em) {
-    .post-card {
-        width: 48.4375%;
-        margin-left: 3.125%
-    }
-
-    .post-card:last-of-type,
-    .post-card:nth-child(2n+2) {
-        margin-left: 0
-    }
 }
 
 .header-container {
@@ -1760,7 +1752,6 @@ input {
 .post-cover {
     height: 210px;
     background-image: url('/assets/bg_lg.jpg');
-    background-size: cover;
     background-position: center;
     position: relative;
     display: flex;
