@@ -983,18 +983,6 @@ body {
         max-width: 720px
     }
 
-    .coverContainerInner {
-        position: absolute;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        top: 0;
-    }
-
-    .logo-section {
-        margin-right: 30%;
-    }
-
     .hero-wrap {
         max-width: 40em
     }
@@ -1098,6 +1086,18 @@ body {
         display: flex;
         justify-content: space-evenly;
         align-items: baseline;
+    }
+
+    .coverContainerInner {
+        position: absolute;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        top: 0;
+    }
+
+    .logo-section {
+        margin-right: 30%;
     }
 }
 
