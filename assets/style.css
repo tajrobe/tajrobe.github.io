@@ -1869,14 +1869,10 @@ input {
     border: 1px solid #d0d0d0;
     -webkit-border-radius: 3px 3px 3px 3px;
     border-radius: 3px 3px 3px 3px;
-    width: 56px;
-    height: 56px;
-    margin: 0 auto 20px
 }
 
 .logo-img {
     display: block;
-    height: 100%
 }
 
 .c-info {
