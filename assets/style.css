@@ -1082,6 +1082,10 @@ body {
         font-size: 1.25rem;
     }
 
+    .c-name {
+        text-align: center;
+    }
+
     .review-suggest-section {
         display: flex;
         justify-content: space-evenly;
@@ -1089,15 +1093,22 @@ body {
     }
 
     .coverContainerInner {
-        position: absolute;
         right: 0;
-        left: 0;
-        bottom: 0;
         top: 0;
     }
 
     .logo-section {
         margin-right: 30%;
+    }
+}
+
+@media (min-width: 768px) {
+    .c-name {
+        text-align: right;
+    }
+
+    .coverContainerInner {
+        right: 9%;
     }
 }
 
@@ -1869,7 +1880,6 @@ input {
 
 .coverContainerInner {
     position: absolute;
-    right: 9%;
     left: 0;
     bottom: 0;
 }
@@ -1899,7 +1909,6 @@ input {
     font-weight: 300;
     line-height: 45px;
     color: #fff;
-    text-align: right;
 }
 
 .c-metaItem {
