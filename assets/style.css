@@ -1848,14 +1848,18 @@ input {
 
 .coverContainer {
     position: relative;
+    height: 100%;
+    padding-left: 0;
+    padding-right: 0;
     z-index: 2;
     text-align: center;
 }
 
 .coverContainerInner {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
 }
 
 .logo-section {
@@ -1872,7 +1876,7 @@ input {
 
 .logo-img {
     display: block;
-    height: 100%;
+    height: 100%
 }
 
 .c-info {
@@ -1886,7 +1890,8 @@ input {
     font-size: 18px;
     font-weight: 300;
     line-height: 45px;
-    color: #fff
+    color: #fff;
+    text-align: right;
 }
 
 .c-metaItem {
