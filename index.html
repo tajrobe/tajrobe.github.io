@@ -25,7 +25,7 @@ layout: default
                 <div class="col-md-8">
                     {%- assign n = paginator.posts | size -%}
                     {%- assign posts = paginator.posts | sample: n -%}
-                    {% for post in posts limit: 15 %}
+                    {% for post in posts%}
                     <div class="col-md-4 col-lg-4 col-xl-4">
                         <a class="black-link" href="{{ site.baseurl }}{{ post.url }}">
                             <div class="place-card place-card--small">
