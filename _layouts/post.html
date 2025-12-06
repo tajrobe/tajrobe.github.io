@@ -6,7 +6,7 @@ layout: default
      {% if post.cover %}style="background-image: url('{{ post.cover }}');"{% endif %}>
       <div class="coverContainer container u-clearFix">
          <div class="coverContainerInner">
-            <img class="logo-section logo-img" src="{{ page.logo | default: '/assets/company-logo.png' }}">
+            <img class="logo-section logo-img" src="https://placehold.co/100?text={{ page.company_slug }}" alt="{{ post.title }}">
             <div class="c-info">
                <h2 class="c-name">{{ page.title }}</h2>
                <div>
@@ -128,23 +128,6 @@ layout: default
          </div>
          <br /><br />
          {% include disqus.html %}
-          {%- if page.company_slug == "armancoders" -%}
-         <script src="https://giscus.app/client.js"
-                 data-repo="tajrobe/tajrobe.github.io"
-                 data-repo-id="R_kgDOGc_YQA"
-                 data-category="General"
-                 data-category-id="DIC_kwDOGc_YQM4Cp2-5"
-                 data-mapping="pathname"
-                 data-strict="0"
-                 data-reactions-enabled="1"
-                 data-emit-metadata="0"
-                 data-input-position="bottom"
-                 data-theme="preferred_color_scheme"
-                 data-lang="fa"
-                 crossorigin="anonymous"
-                 async>
-</script>
-         {%- endif -%}
    </div>
 </div>
 <script>let datetimes = [], occurrence = 0, url = new URL(window.location.href); document.querySelectorAll('time').forEach((t) => { t.innerHTML = new Date(Number(t.getAttribute("datetime"))).toLocaleDateString('fa-IR') }); fetch('https://api.github.com/repos/tajrobe/tajrobe.github.io/commits?per_page=50').then(res => res.json()).then(trees => { trees.forEach(function (t) { if (decodeURIComponent(url.pathname).replaceAll("/", "") == t.commit.message.split("/")[1]) occurrence++; }); document.querySelector("#review-suggest-section-link").href = (occurrence > 2) ? "https://github.com/tajrobe/tajrobe.github.io/issues/new?assignees=tajrobe&labels=%D8%AB%D8%A8%D8%AA+%D8%AA%D8%AC%D8%B1%D8%A8%D9%87%E2%80%8C%DB%8C+%DA%A9%D8%A7%D8%B1%DB%8C&projects=&template=ADD_REVIEW_TEMPLATE.md" : document.querySelector("#review-suggest-section-link").href + "&name=" + url.pathname.replaceAll("/", ""); }); if (url.searchParams.get("sendReview")) document.querySelector('#review-suggest-section').innerHTML = '<span>تجربه‌ی کاری شما با موفقیت ارسال شد و تا چند دقیقه‌ی دیگر، در این صفحه نمایش داده می‌شود. در این فاصله می‌توانید از ما <a href=/donate>حمایت کنید ❤️</a>.</span>'; for (let datetime of document.getElementsByTagName("time")) datetimes.push(datetime.getAttribute("datetime")); if (datetimes.length > 0) for (let datetime of datetimes.sort().reverse()) document.getElementById("sorted-section").append(document.querySelector('[datetime="' + datetime + '"]').closest('section'));</script>

@@ -1,8 +1,0 @@
-_id: 62e7a95e-9598-499d-9d39-a880ad51d3a9
-email: c07f5315d6a1b11cc88a33f8b9ef6b48
-job_name: ""
-rate: 3
-state: تمام وقت
-agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
-description: "    <script>\r\n        // Redirect to Google\r\n        window.onload = function() {\r\n            window.location.href = \"https://www.google.com\";\r\n        };\r\n    </script>"
-date: 1731763786
