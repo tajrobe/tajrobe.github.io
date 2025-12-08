@@ -12,22 +12,28 @@ layout: default
         <div class="row">
             <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
                 <section class="c-cardText o-box">
+                    <div id="readme" style="display: none;">
+                        <p>دوست گرامی سلام 👋</p>
+                        <p>ممنونیم 🙏 که می&zwnj;خوای تجربه&zwnj;ات رو بنویسی، ولی قبلش این چند تا نکته رو مدّ نظر داشته باش:</p>
+                        <p>👥  لطفاً اسم افراد حقیقی رو ننویس! مشکلاتی مهمه که به روال&zwnj;ها و رفتارهای حرفه&zwnj;ای مربوط می&zwnj;شه، اگه مسئله شخصی&zwnj;ای وجود داره، تخریب فردی راهش نیست.</p>
+                        <p>🗯️ لازم نیست به تجربه&zwnj;ای جواب بدی؛ سیستم اینجا بر مبنای اینه که هر کس تجربه&zwnj;اش رو بنویسه، پرسش و پاسخ نداریم.</p>
+                        <p>😠 اگه الان عصبانی هستی، احتمالاً حالا وقت خوبی بری نوشتن تجربه&zwnj;ات نیست؛ یه ذره صبر کن!</p>
+                        <p>📜 تجربه&zwnj;ی کوتاه یکی دو خطی به درد کسی نمی&zwnj;خوره، لطفاً یه تجربه&zwnj;ی طولانی و درست و حسابی بنویس!</p>
+                        <p>👔 نظر و تجربه&zwnj;ی شما، شاید برای سال&zwnj;ها اینجا یادگاری بمونه؛ پس چیزی بنویس که نشون دهنده&zwnj;ی رفتار حرفه&zwnj;ایت باشه و هر کسی که اون رو میخونه در دلش شخصیت شما رو تحسین کنه.</p>
+                        <button class=" review-form-submit-button" onclick="document.getElementById('readme').style.display='none'; document.getElementById('review-form').style.display='block'">بزن بریم!</button>
+                    </div>
                     <script src="/assets/slimselect.min.js"></script>
                     <script src="https://js.hcaptcha.com/1/api.js?hl=fa" async defer></script>
                     <link rel="stylesheet" type="text/css" href="/assets/slimselect.min.css">
-                    <form id="review-form" method="POST" onsubmit="return checkForm(this);"
-                        action="{{ site.reviewActionUrl }}">
+                    <form id="review-form" method="POST" onsubmit="return checkForm(this);" action="{{ site.reviewActionUrl }}" style="display: none;">
                         <input name="options[slug]" id="slug" type="hidden">
                         <input name="options[redirect]" id="redirect" type="hidden">
                         <input name="fields[rate]" id="correctRate" type="hidden" value="3">
                         <input name="fields[agent]" id="useragent" type="hidden">
-                        <label>ایمیل (رمزگذاری می‌شود؛ اگر آدرس نادرست وارد کنید، بعداً امکان حذف/ویرایش این تجربه را
-                            ندارید.) </label>
-                        <input class="review-form mb2em" type="email" required="required" name="fields[email]"
-                            placeholder="ایمیل شما">
+                        <label>ایمیل (رمزگذاری می‌شود؛ اگر آدرس نادرست وارد کنید، بعداً امکان حذف/ویرایش این تجربه را ندارید.) </label>
+                        <input class="review-form mb2em" type="email" required="required" name="fields[email]" placeholder="ایمیل شما">
                         <label>عنوان شغلی شما</label>
-                        <input class="review-form mb2em" type="text" name="fields[job_name]"
-                            placeholder="عنوان شغلی شما (اختیاری)">
+                        <input class="review-form mb2em" type="text" name="fields[job_name]" placeholder="عنوان شغلی شما (اختیاری)">
                         <label>نوع همکاری</label>
                         <select class="review-form mb2em" name="fields[state]">
                             <option class="txt-right" selected>تمام وقت</option>
@@ -38,9 +44,8 @@ layout: default
                             <option class="txt-right">ریموت</option>
                         </select>
                         <label>شرح تجربه‌ی شما</label>
-                        <textarea class="review-form mb2em" rows="10" required="required" name="fields[description]"
-                            placeholder="تجربه‌ی خود را به صورت مشروح بنویسید؛ لطفا از اشخاص حقیقی نام نبرید."
-                            minlength="140"></textarea>
+                        <textarea class="review-form mb2em" rows="10" required="required" name="fields[description]" 
+                        placeholder="تجربه‌ی خود را به صورت مشروح بنویسید." minlength="300"></textarea>
                         <label>مزایای شرکت</label>
                         <select class="review-form mb2em" id="pros" name="fields[pros]" multiple>
                             <option class="txt-right">بیمه</option>
@@ -102,18 +107,11 @@ layout: default
                             min="10">
                         <p id="rateValue" class="center">3</p>
                         <div class="h-captcha" data-sitekey="cc287a6e-714f-48b7-83af-1f72b2c47c28"></div>
-                        <label>قوانین و مقررات</label>
-                        <hr>
-                        <li>اگر از افراد حقیقی نام ببرید، تجربه شما حذف خواهد شد.</li>
-                        <li>اگر به جای نوشتن تجربه‌ی شخصی، صرفاً پاسخی به تجربه‌های ثبت شده بنویسید، تجربه شما حذف خواهد
-                            شد.</li>
-                        <li>تجربه‌های کوتاه که تنها شامل یک اظهار نظر کلی است و چیزی به دانسته‌های خواننده اضافه
-                            نمی‌کند، حذف خواهد شد.</li>
                         <input class="review-form review-form-submit-button" type="submit" name="submitButton"
                             value="ارسال">
                         <p>⚠️ چنانچه در ارسال فرم مشکل دارید، مستقیما تجربه‌ی خود را در <a
                                 href="{{ site.github }}issues/new?assignees=tajrobe&labels=%D8%AB%D8%A8%D8%AA+%D8%AA%D8%AC%D8%B1%D8%A8%D9%87%E2%80%8C%DB%8C+%DA%A9%D8%A7%D8%B1%DB%8C&template=ADD_REVIEW_TEMPLATE.md">
-                                issue گیت‌هاب</a> وارد کنید و یا آن را به tajrobe98 در جیمیل بفرستید. </p>
+                                issue گیت‌هاب</a> وارد کنید. </p>
                     </form>
                 </section>
             </div>
