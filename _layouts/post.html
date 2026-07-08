@@ -1,133 +1,133 @@
 ---
 layout: default
 ---
-<div class="post-header">
-   <div class="post-cover" 
-     {% if post.cover %}style="background-image: url('{{ post.cover }}');"{% endif %}>
-      <div class="coverContainer container u-clearFix">
-         <div class="coverContainerInner">
-            <img class="logo-section logo-img" src="https://placehold.co/100?text={{ page.company_slug }}" alt="{{ post.title }}">
-            <div class="c-info">
-               <h2 class="c-name">{{ page.title }}</h2>
-               <div>
-                  <span class="c-metaItem">{{ page.industry }}</span>
-                  <span class="c-metaItem">{{ page.size }}</span>
-                  <span class="c-metaItem">
-                     <a class="c-metaLink" rel="nofollow" href="{{ page.site }}" target="_blank">{{ page.site }}</a>
-                  </span>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
-<div class="blog">
-   <div class="container">
-      {%- assign comments = site.data.review[page.company_slug] -%}
-      {%- assign totalRate = 0 -%}
-      {%- assign totalSize = comments | size -%}
-      {%- for comment in comments -%}
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/static/css/company.css">
+
+<div class="tj-company bg-[var(--paper)] text-[var(--ink)] font-['Vazirmatn',sans-serif] min-h-screen pt-8 px-6 pb-12 max-[480px]:pt-6 max-[480px]:px-[1.1rem] max-[480px]:pb-10" dir="rtl">
+
+  <div class="max-w-[760px] mx-auto">
+
+    {%- assign comments = site.data.review[page.company_slug] -%}
+    {%- assign totalRate = 0 -%}
+    {%- assign totalSize = comments | size -%}
+    {%- for comment in comments -%}
       {%- if comment[1].rate == '' -%}
-      {%- assign totalSize = totalSize | minus: 1 -%}
+        {%- assign totalSize = totalSize | minus: 1 -%}
       {%- else -%}
-      {% assign totalRate = totalRate | plus: comment[1].rate %}
+        {% assign totalRate = totalRate | plus: comment[1].rate %}
       {%- endif -%}
-      {%- endfor -%}
-      {%- if totalSize <= 0 -%} {%- assign totalSize=1 -%} {%- endif -%} <script type="application/ld+json">
-         {
-         "@context": "http://schema.org",
-         "@type": "MediaObject",
-         "name": "شرکت {{ page.title }}",
-         "aggregateRating": { "@type": "AggregateRating", "ratingValue": "{{ totalRate | divided_by: totalSize | round:
-         1 }}", "bestRating": "5", "ratingCount": "{{ comments.size }}" }
-         }
-         </script>
-         <div class="row">
-            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-               <section id="review-suggest-section" class="c-cardText o-box review-suggest-section">
-                  <span>تجربه‌ی کار در {{ page.title }} را دارید؟</span>
-                  <a id="review-suggest-section-link" class="review-suggest-section-link"
-                     href="/review?slug={{ page.company_slug }}">ثبت تجربه‌ی کاری</a>
-               </section>
-               <section class="c-cardText o-box">
-                  <div class="pull-right">
-                     <h4 class="c-cardText-title">معرفی شرکت</h4>
-                  </div>
-                  <div class="pull-left center">
-                     <div class="rating">
-                        <div class="rating-upper"
-                           style="width: {{ totalRate | divided_by: totalSize | times: 20 | round: 2 }}%">
-                           <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                        </div>
-                        <div class="rating-lower"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                        </div>
-                     </div>
-                     <br /><span class="gray"><small>امتیاز {{ totalRate | divided_by: totalSize | round: 2 }} ({{
-                           comments.size }} تجربه)</small></span>
-                  </div>
-                  <div style="clear:both"></div>
-                  <div class="c-cardText-body">
-                     <p>{{ content }}</p>
-                     <small><a href="{{ site.github }}blob/master/{{ page.path }}" target="_blank">ویرایش اطلاعات
-                           شرکت</a></small>
-                  </div>
-               </section>
-               <h4 class="c-heading c-heading--h4">تجربه&zwnj;های کاری در {{ page.title }}</h4>
-               <div id="sorted-section"></div>
-               {%- for comment in comments -%}
-               {% assign commentDate = comment[1].date | slice: 0,10 | plus: 0 %}
-               {%- if comment[1].date == '' && comment[1].rate == '' -%}
-               <section class="c-cardText o-box ribbon ribbon-left" data-ribbon="سالپا">
-                  {%- elsif commentDate < 1635728400 -%} <section class="c-cardText o-box ribbon ribbon-left"
-                     data-ribbon="جابگای">
-                     {%- else -%}
-                     <section class="c-cardText o-box">
-                        {%- endif -%}
-                        <div class="pull-right">
-                           <h4 class="c-cardText-title">{{ comment[1].job_name }} | {{ comment[1].state }}</h4>
-                           {%- if comment[1].date == '' -%}{%- else -%}
-                           <time class="gray" datetime="{{ comment[1].date | slice: 0,10 }}000">{{ comment[1].date |
-                              slice: 0,10 | date: '%B %d, %Y' }}</time>
-                           {%- endif -%}
-                        </div>
-                        <div class="pull-left center">
-                           {%- if comment[1].rate == '' -%}{%- else -%}
-                           <div class="rating">
-                              <div class="rating-upper" style="width: {{ comment[1].rate | times: 20 }}%">
-                                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                              </div>
-                              <div class="rating-lower">
-                                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                              </div>
-                           </div>
-                           <br /><span class="gray">{{ comment[1].rate }}</span>
-                           {%- endif -%}
-                        </div>
-                        <div style="clear:both"></div>
-                        <div class="c-cardText-body">
-                           <p>{{ comment[1].description | newline_to_br | strip_newlines | replace: '
-                           <p><br></p>', ''}}</p>
-                           <hr>
-                           {% assign pros = comment[1].pros | split: "," %}
-                           {% assign cons = comment[1].cons | split: "," %}
-                           {%- if pros.size == 0 && cons.size == 0-%}{%- else -%}<p><b>مزایا: </b>{%- for pro in pros
-                              -%}<span class="label">{{pro | replace: '"', '' | replace: ']', '' | replace: '[', ''
-                                 }}</span> {%- endfor -%}</p>
-                           <p><b>معایب: </b>{%- for con in cons -%}<span class="label">{{con | replace: '"', '' |
-                                 replace: ']', '' | replace: '[', '' }}</span> {%- endfor -%}</p>{%- endif -%}
-                           <small><a
-                                 href="{{ site.github }}blob/master/_data/review/{{ page.company_slug }}/{{ comment[0] }}.yml"
-                                 target="_blank">پیوند یکتای این تجربه‌ی کاری</a></small>
-                        </div>
-                        <div class="card-footer text-muted">
-                           <small> ℹ️ این تجربه، نظر شخصی یک فرد است و الزامی بر درستی/نادرستی آن نیست.</small>
-                        </div>
-                     </section>
-                     {%- endfor -%}
-            </div>
-         </div>
-         <br /><br />
-         {% include disqus.html %}
-   </div>
+    {%- endfor -%}
+    {%- if totalSize <= 0 -%}{%- assign totalSize = 1 -%}{%- endif -%}
+
+    <script type="application/ld+json">
+      {
+      "@context": "http://schema.org",
+      "@type": "MediaObject",
+      "name": "شرکت {{ page.title }}",
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "{{ totalRate | divided_by: totalSize | round: 1 }}", "bestRating": "5", "ratingCount": "{{ comments.size }}" }
+      }
+    </script>
+
+    <div class="flex items-center gap-4 mb-7">
+      <div class="flex items-center gap-4 w-full max-[480px]:flex-wrap">
+        <img class="w-14 h-14 rounded-[14px] object-cover shrink-0 border border-[var(--line)]" src="https://placehold.co/100?text={{ page.company_slug }}" alt="{{ post.title }}">
+        <div>
+          <h2 class="text-[var(--ink)] font-black text-2xl mb-[0.4rem]">{{ page.title }}</h2>
+          <div class="flex flex-wrap gap-[0.6rem] text-[0.8rem]">
+            <span class="bg-[var(--chip)] text-[var(--muted)] px-[0.7rem] py-1 rounded-full">{{ page.industry }}</span>
+            <span class="bg-[var(--chip)] text-[var(--muted)] px-[0.7rem] py-1 rounded-full">{{ page.size }}</span>
+            <a class="bg-[var(--chip)] text-[var(--accent-ink)] px-[0.7rem] py-1 rounded-full no-underline hover:underline" rel="nofollow" href="{{ page.site }}" target="_blank">{{ page.site }}</a>
+          </div>
+        </div>
+        <div class="flex flex-col items-end gap-[0.15rem] mr-auto max-[480px]:mr-0 max-[480px]:flex-row max-[480px]:items-center max-[480px]:w-full max-[480px]:justify-start max-[480px]:gap-2">
+          <span class="order-first max-[480px]:order-none text-[1.4rem] max-[480px]:text-base font-black text-[var(--ink)]">{{ totalRate | divided_by: totalSize | round: 2 }} ({{ comments.size }} تجربه)</span>
+          <span class="relative inline-block text-[0.85rem] leading-none tracking-[2px]">
+            <span class="absolute top-0 right-0 overflow-hidden whitespace-nowrap text-[var(--accent)]" style="width: {{ totalRate | divided_by: totalSize | times: 20 | round: 2 }}%">★★★★★</span>
+            <span class="text-[var(--line)]">★★★★★</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <section id="review-suggest-section" class="bg-[var(--card)] border border-[var(--line)] rounded-2xl py-[1.1rem] px-[1.4rem] flex items-center justify-between gap-4 text-[0.92rem] text-[var(--body)] mb-6 flex-wrap max-[480px]:p-5">
+      <span>تجربه‌ی کار در {{ page.title }} را دارید؟</span>
+      <a id="review-suggest-section-link" class="bg-[var(--accent)] text-white font-bold py-[0.6rem] px-[1.3rem] rounded-[10px] no-underline text-[0.85rem] whitespace-nowrap hover:text-[var(--accent-tint)]" href="/review?slug={{ page.company_slug }}">ثبت تجربه‌ی کاری</a>
+    </section>
+
+    <section class="rounded-lg border border-gray-200 border-r-4 border-r-orange-500 bg-white p-4">
+      <div class="flex justify-between items-start gap-4 mb-[0.9rem] flex-wrap">
+        <h4 class="text-[0.8rem] text-[var(--muted)] font-medium">معرفی شرکت</h4>
+      </div>
+      <div class="[&_hr]:hidden">
+        <p class="leading-[1.9] text-[0.9rem] text-[var(--body)] mb-4 whitespace-pre-line">{{ content }}</p>
+        <div class="pt-3 text-[0.75rem] text-[var(--faint)] [&_a]:float-left pb-2 mb-2">
+          <a class="text-[var(--accent)] font-medium no-underline hover:text-[var(--accent-ink)]" href="{{ site.github }}blob/master/{{ page.path }}" target="_blank">ویرایش اطلاعات شرکت</a>
+        </div>
+      </div>
+    </section>
+
+    <h4 class="font-black text-[1.05rem] mt-7 mb-4">تجربه‌های کاری در {{ page.title }}</h4>
+    <div id="sorted-section"></div>
+
+    {%- for comment in comments -%}
+      {% assign commentDate = comment[1].date | slice: 0,10 | plus: 0 %}
+      {%- if comment[1].date == '' and comment[1].rate == '' -%}
+        <section class="tj-ribbon bg-[var(--card)] border border-[var(--line)] rounded-2xl p-[1.6rem] mb-[1.1rem] relative max-[480px]:p-5" data-ribbon="سالپا">
+      {%- elsif commentDate < 1635728400 -%}
+        <section class="tj-ribbon bg-[var(--card)] border border-[var(--line)] rounded-2xl p-[1.6rem] mb-[1.1rem] relative max-[480px]:p-5" data-ribbon="جابگای">
+      {%- else -%}
+        <section class="bg-[var(--card)] border border-[var(--line)] rounded-2xl p-[1.6rem] mb-[1.1rem] relative max-[480px]:p-5">
+      {%- endif -%}
+        <div class="flex justify-between items-start gap-4 mb-[0.9rem] flex-wrap">
+          <div>
+            <h4 class="font-bold text-[0.98rem] mb-1">{{ comment[1].job_name }} | {{ comment[1].state }}</h4>
+            {%- if comment[1].date != '' -%}
+              <time class="text-[0.75rem] text-[var(--muted)]" datetime="{{ comment[1].date | slice: 0,10 }}000">{{ comment[1].date | slice: 0,10 | date: '%B %d, %Y' }}</time>
+            {%- endif -%}
+          </div>
+          {%- if comment[1].rate != '' -%}
+          <div class="flex items-center gap-2">
+            <span class="relative inline-block text-[0.85rem] leading-none tracking-[2px]">
+              <span class="absolute top-0 right-0 overflow-hidden whitespace-nowrap text-[var(--accent)]" style="width: {{ comment[1].rate | times: 20 }}%">★★★★★</span>
+              <span class="text-[var(--line)]">★★★★★</span>
+            </span>
+            <span class="text-[0.72rem] text-[var(--muted)]">{{ comment[1].rate }}</span>
+          </div>
+          {%- endif -%}
+        </div>
+        <div class="[&_hr]:hidden">
+          <p class="leading-[1.9] text-[0.9rem] text-[var(--body)] mb-4 whitespace-pre-line">{{ comment[1].description | newline_to_br | strip_newlines | replace: '<p><br></p>', '' }}</p>
+          {% assign pros = comment[1].pros | split: "," %}
+          {% assign cons = comment[1].cons | split: "," %}
+          {%- if pros.size > 0 or cons.size > 0 -%}
+          <div class="flex flex-wrap gap-[0.45rem] mb-[1.1rem]">
+            {%- for pro in pros -%}<span class="text-[0.72rem] px-3 py-[0.3rem] rounded-full bg-[var(--accent-tint)] text-[var(--accent-ink)]">{{ pro | replace: '"', '' | replace: ']', '' | replace: '[', '' }}</span>{%- endfor -%}
+            {%- for con in cons -%}<span class="text-[0.72rem] px-3 py-[0.3rem] rounded-full bg-[var(--chip)] text-[var(--muted)]">{{ con | replace: '"', '' | replace: ']', '' | replace: '[', '' }}</span>{%- endfor -%}
+          </div>
+          {%- endif -%}
+          <div class="border-t border-[var(--line)] pt-3 mt-3 text-[0.75rem] text-[var(--faint)]">
+            <a class="text-[var(--faint)] font-medium no-underline hover:text-[var(--accent-ink)]" href="{{ site.github }}blob/master/_data/review/{{ page.company_slug }}/{{ comment[0] }}.yml" target="_blank">پیوند یکتای این تجربه‌ی کاری</a>
+            <div style="margin-top: 0.5rem;">ℹ️ این تجربه، نظر شخصی یک فرد است و الزامی بر درستی/نادرستی آن نیست.</div>
+          </div>
+        </div>
+      </section>
+    {%- endfor -%}
+
+    {% include disqus.html %}
+  </div>
 </div>
-<script>let datetimes = [], occurrence = 0, url = new URL(window.location.href); document.querySelectorAll('time').forEach((t) => { t.innerHTML = new Date(Number(t.getAttribute("datetime"))).toLocaleDateString('fa-IR') }); fetch('https://api.github.com/repos/tajrobe/tajrobe.github.io/commits?per_page=50').then(res => res.json()).then(trees => { trees.forEach(function (t) { if (decodeURIComponent(url.pathname).replaceAll("/", "") == t.commit.message.split("/")[1]) occurrence++; }); document.querySelector("#review-suggest-section-link").href = (occurrence > 2) ? "https://github.com/tajrobe/tajrobe.github.io/issues/new?assignees=tajrobe&labels=%D8%AB%D8%A8%D8%AA+%D8%AA%D8%AC%D8%B1%D8%A8%D9%87%E2%80%8C%DB%8C+%DA%A9%D8%A7%D8%B1%DB%8C&projects=&template=ADD_REVIEW_TEMPLATE.md" : document.querySelector("#review-suggest-section-link").href + "&name=" + url.pathname.replaceAll("/", ""); }); if (url.searchParams.get("sendReview")) document.querySelector('#review-suggest-section').innerHTML = '<span>تجربه‌ی کاری شما با موفقیت ارسال شد و تا چند دقیقه‌ی دیگر، در این صفحه نمایش داده می‌شود. در این فاصله می‌توانید از ما <a href=/donate>حمایت کنید ❤️</a>.</span>'; for (let datetime of document.getElementsByTagName("time")) datetimes.push(datetime.getAttribute("datetime")); if (datetimes.length > 0) for (let datetime of datetimes.sort().reverse()) document.getElementById("sorted-section").append(document.querySelector('[datetime="' + datetime + '"]').closest('section'));</script>
+
+<script>
+  let datetimes = [], occurrence = 0, url = new URL(window.location.href);
+  document.querySelectorAll('time').forEach((t) => { t.innerHTML = new Date(Number(t.getAttribute("datetime"))).toLocaleDateString('fa-IR') });
+  fetch('https://api.github.com/repos/tajrobe/tajrobe.github.io/commits?per_page=50').then(res => res.json()).then(trees => {
+    trees.forEach(function (t) { if (decodeURIComponent(url.pathname).replaceAll("/", "") == t.commit.message.split("/")[1]) occurrence++; });
+    document.querySelector("#review-suggest-section-link").href = (occurrence > 2)
+      ? "https://github.com/tajrobe/tajrobe.github.io/issues/new?assignees=tajrobe&labels=%D8%AB%D8%A8%D8%AA+%D8%AA%D8%AC%D8%B1%D8%A8%D9%87%E2%80%8C%DB%8C+%DA%A9%D8%A7%D8%B1%DB%8C&projects=&template=ADD_REVIEW_TEMPLATE.md"
+      : document.querySelector("#review-suggest-section-link").href + "&name=" + url.pathname.replaceAll("/", "");
+  });
+  if (url.searchParams.get("sendReview")) document.querySelector('#review-suggest-section').innerHTML = '<span>تجربه‌ی کاری شما با موفقیت ارسال شد و تا چند دقیقه‌ی دیگر، در این صفحه نمایش داده می‌شود. در این فاصله می‌توانید از ما <a href=/donate>حمایت کنید ❤️</a>.</span>';
+  for (let datetime of document.getElementsByTagName("time")) datetimes.push(datetime.getAttribute("datetime"));
+  if (datetimes.length > 0) for (let datetime of datetimes.sort().reverse()) document.getElementById("sorted-section").append(document.querySelector('[datetime="' + datetime + '"]').closest('section'));
+</script>

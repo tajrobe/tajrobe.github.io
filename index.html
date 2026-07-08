@@ -1,94 +1,171 @@
 ---
 layout: default
 ---
-<div class="hero lazyloaded" data-bg="/assets/bg_lg.jpg" style="background-image: url(&quot;/assets/bg_lg.jpg&quot;);">
-    <div class="hero-wrap">
-        <h1 class="hero-title">اشتراک‌گذاری تجربه‌ی کاری با همه!</h1>
-        <h2 class="hero-search" onclick="window.location.href='/search'">جستجوی نام شرکت مورد نظر...</h2>
-    </div>
-</div>
-<main class="site-content">
-    <section class="blog">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-4 col-md-4">
-                    <section class="o-box">
-                        <table>
-                            <tbody id="latest-review-body">
-                                <tr>
-                                    <th colspan="2"><b>آخرین تجربه‌ها</b></th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </section>
-                </div>
-                <div class="col-md-8">
-                    {%- assign n = paginator.posts | size -%}
-                    {%- assign posts = paginator.posts | sample: n -%}
-                    {% for post in posts%}
-                    <div class="col-md-4 col-lg-4 col-xl-4">
-                        <a class="black-link" href="{{ site.baseurl }}{{ post.url }}">
-                            <div class="place-card place-card--small">
-                                <div class="place-card-img">
-                                    <img src="https://placehold.co/100?text={{ post.company_slug }}"
-                                        class="place-card-img-thumbnail" alt="{{ post.title }}">
-                                </div>
-                                <div class="place-card-content">
-                                    <h3 class="place-card-content-header">{{ post.title }}</h3>
-                                    <p class="mb-0"><i class="fa fa-map-marker"></i> <span class="text-muted">{{
-                                            post.city
-                                            }}</span></p>
 
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    {% endfor %}
-                </div>
+<div class="max-w-7xl mx-auto px-6 pt-8 pb-16" dir="rtl">
+
+  <style>
+    .badge-0 { background:#EAF3DE; color:#3B6D11; }
+    .badge-1 { background:#E6F1FB; color:#185FA5; }
+    .badge-2 { background:#FCEBEB; color:#791F1F; }
+    .badge-3 { background:#EEEDFE; color:#3C3489; }
+    .badge-4 { background:#FAEEDA; color:#854F0B; }
+  </style>
+
+
+<div class="py-10 mb-2 text-center">
+    <p class="text-xs font-medium tracking-wide mb-3" style="color:#F04923">پلتفرم تجربه‌های شغلی</p>
+  
+    <p class="text-3xl font-bold mb-1.5">
+      اشتراک گذاری <span style="color:#F04923">تجربه‌ی کاری</span> با همه!
+    </p>
+    <p class="text-sm text-gray-500 mb-6">صادقانه، ناشناس و بدون واسطه</p>
+  
+    <form class="flex items-center gap-2 max-w-md mx-auto">
+      <div class="relative flex-1">
+        <input id="search-input" type="search" autocomplete="off"
+               placeholder="نام شرکت مورد نظر را جستجو کن"
+               class="w-full bg-gray-100 rounded-full py-3 pr-4 pl-11 text-sm text-gray-700 placeholder:text-gray-400 text-right focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#F04923]/20 transition-colors">
+      </div>
+      <button type="submit" aria-label="جستجو"
+              class="shrink-0 w-11 h-11 rounded-full bg-neutral-900 text-white flex items-center justify-center hover:bg-neutral-800 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" />
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-8">
+
+    <section class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+
+      <div id="default-posts" class="contents">
+        <a href="{{ site.baseurl }}/submit-review"
+           class="bg-gray-50 border border-dashed border-gray-300 rounded-xl p-4 flex flex-col items-center justify-center text-center gap-1.5 hover:border-gray-400 transition min-h-[110px]">
+          <i class="ti ti-plus text-[20px] text-[#185FA5]"></i>
+          <p class="text-sm text-[#185FA5] font-medium m-0">ثبت تجربه جدید</p>
+        </a>
+
+        {%- assign n = paginator.posts | size -%}
+        {%- assign posts = paginator.posts | sample: n -%}
+        {% for post in posts %}
+        {%- assign badge_class = forloop.index0 | modulo: 5 | prepend: "badge-" -%}
+        <a href="{{ site.baseurl }}{{ post.url }}" class="bg-white border border-gray-200 rounded-xl p-4 block">
+          <div class="flex items-center gap-2.5 mb-2">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center text-xs font-medium shrink-0 {{ badge_class }}">
+              {{ post.company_slug | slice: 0, 2 }}
             </div>
-            <div style="clear: both"></div>
-            {% if paginator.total_pages > 1 %}
-            <ul class="pagination justify-content-center flex-wrap">
-                {% if paginator.previous_page %}
-                <li class="page-item"><a class="page-link"
-                        href="{{ paginator.previous_page_path | relative_url }}"><span aria-hidden="true">&laquo;
-                        </span></a></li>
-                {% else %}
-                <li class="page-item disabled"><a class="page-link"
-                        href="{{ paginator.previous_page_path | relative_url }}"><span aria-hidden="true">&laquo;
-                        </span></a></li>
-                {% endif %}
-                {% for page in (1..paginator.total_pages) %}
-                {% if page == paginator.page %}
-                <li class="page-item active"><a class="page-link" href="#">{{ page }}</a></li>
-                {% elsif page == 1 %}
-                <li class="page-item"><a class="page-link" href="{{ '/' | relative_url }}">{{ page }}</a></li>
-                {% else %}
-                <li class="page-item "><a class="page-link"
-                        href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a></li>
-                {% endif %}
-                {% endfor %}
-                {% if paginator.next_page %}
-                <li class="page-item"><a class="page-link" href="{{ paginator.next_page_path | relative_url }}"><span
-                            aria-hidden="true"> &raquo;</span></a></li>
-                {% else %}
-                <li class="page-item disabled"><a class="page-link"
-                        href="{{ paginator.previous_page_path | relative_url }}"><span aria-hidden="true">
-                            &raquo;</span></a></li>
-                {% endif %}
-            </ul>
-            {% endif %}
-        </div>
+            <div>
+              <p class="font-semibold text-md m-0">{{ post.title }}</p>
+              <p class="text-sm text-gray-400 m-0">{{ post.city }}</p>
+            </div>
+          </div>
+          {% if post.rate %}
+          <div class="flex items-center gap-1 text-xs text-gray-500">
+            <i class="ti ti-star text-[14px] text-amber-500"></i>
+            <span>{{ post.rate }} از {{ post.review_count | default: 1 }} تجربه</span>
+          </div>
+          {% endif %}
+        </a>
+        {% endfor %}
+      </div>
+
+      <div id="search-results" class="contents"></div>
+
     </section>
-</main>
+
+    <aside class="md:w-1/3">
+      <div class="border border-gray-200 rounded-xl p-4">
+        <h2 class="font-medium mb-3 text-sm">آخرین تجربه‌ها</h2>
+        <ul id="latest-review-body" class="divide-y text-sm"></ul>
+      </div>
+    </aside>
+
+  </div>
+
+  {% if paginator.previous_page or paginator.next_page %}
+  <div id="pagination" class="flex justify-center gap-4 mt-8 text-sm">
+    {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="text-[#185FA5]">قبلی</a>{% endif %}
+    {% if paginator.next_page %}<a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="text-[#185FA5]">بعدی</a>{% endif %}
+  </div>
+  {% endif %}
+</div>
+
 <script src="/assets/jalali-moment.browser-v3.3.11.js"></script>
 <script>
     let latestReviews = "";
     fetch('https://api.github.com/repos/tajrobe/tajrobe.github.io/commits?per_page=20').then(res => res.json()).then(trees => {
         for (let tree of trees)
             if (tree.commit.message.includes("/") && !tree.commit.message.includes("/patch"))
-                latestReviews += "<tr><td><a href='/" + encodeURI(tree.commit.message.split("/")[1]) + "' target='_blank'>تجربه‌ی کاری جدید در شرکت " + tree.commit.message.split("/")[1].replaceAll("-", " ") + "</a></td><td><small>" + moment.from(tree.commit.committer.date, 'en').locale('fa').fromNow() + "</small></td></tr>";
-
+            latestReviews += "<li class='py-2'><a href='/" + encodeURI(tree.commit.message.split("/")[1]) + "' target='_blank' class='text-[#185FA5] hover:underline'>تجربه‌ی کاری جدید در شرکت " + tree.commit.message.split("/")[1].replaceAll("-", " ") + "</a><span class='text-gray-400 text-xs block'>" + moment.from(tree.commit.committer.date, 'en').locale('fa').fromNow() + "</span></li>";
         document.getElementById("latest-review-body").insertAdjacentHTML('beforeend', latestReviews);
     });
+</script>
+
+<script>
+    // Inline search: fetches the same search.json the dedicated /search
+    // page uses, and swaps the results into this page's own grid instead
+    // of navigating away.
+    let searchPages = [];
+    fetch('{{ "/assets/search.json" | relative_url }}')
+      .then(res => res.json())
+      .then(data => { searchPages = data; });
+
+    function findMatches(term) {
+        const regex = new RegExp(term, 'gi');
+        return searchPages.filter(item => item.title.match(regex) || item.title_en.match(regex));
+    }
+
+    function renderSearch() {
+        const term = this.value.trim();
+        const defaultPosts = document.getElementById('default-posts');
+        const searchResults = document.getElementById('search-results');
+        const pagination = document.getElementById('pagination');
+
+        if (!term) {
+            defaultPosts.classList.remove('hidden');
+            defaultPosts.classList.add('contents');
+            searchResults.innerHTML = '';
+            if (pagination) pagination.classList.remove('hidden');
+            return;
+        }
+
+        defaultPosts.classList.add('hidden');
+        defaultPosts.classList.remove('contents');
+        if (pagination) pagination.classList.add('hidden');
+
+        const matches = findMatches(term);
+
+        if (matches.length === 0) {
+            searchResults.innerHTML = `
+              <div class="col-span-full text-center py-10">
+                <p class="text-sm text-gray-500 mb-1">شرکت «${term}» یافت نشد</p>
+                <p class="text-sm">می‌خواهید <a class="text-[#185FA5] hover:underline" href="{{ site.github }}issues/new?assignees=tajrobe&labels=%D8%AB%D8%A8%D8%AA+%D8%B4%D8%B1%DA%A9%D8%AA+%D8%AC%D8%AF%DB%8C%D8%AF&template=ADD_MISSING_COMPANY_TEMPLATE.md" target="_blank">«${term}» را به لیست شرکت‌ها اضافه کنید؟</a></p>
+              </div>`;
+            return;
+        }
+
+        searchResults.innerHTML = matches.map((item, i) => {
+            const badgeClass = 'badge-' + (i % 5);
+            const initials = (item.title_en || item.title || '').slice(0, 2);
+            return `
+              <a href="${item.url}" class="bg-white border border-gray-200 rounded-xl p-4 block">
+                <div class="flex items-center gap-2.5 mb-2">
+                  <div class="w-9 h-9 rounded-lg flex items-center justify-center text-xs font-medium shrink-0 ${badgeClass}">${initials}</div>
+                  <div>
+                    <p class="font-semibold text-md m-0">${item.title}</p>
+                    <p class="text-sm text-gray-400 m-0">${item.city || ''}</p>
+                  </div>
+                </div>
+              </a>`;
+        }).join('');
+    }
+
+    const searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('input', renderSearch);
+    searchInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') event.preventDefault();
+    });
+    document.querySelector('form').addEventListener('submit', e => e.preventDefault());
 </script>

@@ -1,132 +1,182 @@
 ---
 layout: default
 ---
-<div class="hero lazyloaded" data-bg="/assets/bg_lg.jpg"
-    style="background-image: url(&quot;/assets/bg_lg.jpg&quot;);min-height: 16.25em;height: 0;">
-    <div class="hero-wrap">
-        <h1 id="hero-title" class="hero-title">ثبت تجربه‌ی کاری برای </h1>
-    </div>
-</div>
-<div class="blog">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-                <section class="c-cardText o-box">
-                    <div id="readme">
-                        <p>دوست گرامی سلام 👋</p>
-                        <p>ممنونیم 🙏 که می&zwnj;خوای تجربه&zwnj;ات رو بنویسی، ولی قبلش این چند تا نکته رو مدّ نظر داشته باش:</p>
-                        <p>👥  لطفاً اسم افراد حقیقی رو ننویس! مشکلاتی مهمه که به روال&zwnj;ها و رفتارهای حرفه&zwnj;ای مربوط می&zwnj;شه، اگه مسئله شخصی&zwnj;ای وجود داره، تخریب فردی راهش نیست.</p>
-                        <p>🗯️ لازم نیست به تجربه&zwnj;ای جواب بدی؛ سیستم اینجا بر مبنای اینه که هر کس تجربه&zwnj;اش رو بنویسه، پرسش و پاسخ نداریم.</p>
-                        <p>😠 اگه الان عصبانی هستی، احتمالاً حالا وقت خوبی بری نوشتن تجربه&zwnj;ات نیست؛ یه ذره صبر کن!</p>
-                        <p>📜 تجربه&zwnj;ی کوتاه یکی دو خطی به درد کسی نمی&zwnj;خوره، لطفاً یه تجربه&zwnj;ی طولانی و درست و حسابی بنویس!</p>
-                        <p>👔 نظر و تجربه&zwnj;ی شما، شاید برای سال&zwnj;ها اینجا یادگاری بمونه؛ پس چیزی بنویس که نشون دهنده&zwnj;ی رفتار حرفه&zwnj;ایت باشه و هر کسی که اون رو میخونه در دلش شخصیت شما رو تحسین کنه.</p>
-                        <button class=" review-form-submit-button" onclick="document.getElementById('readme').style.display='none'; document.getElementById('review-form').style.display='block'">بزن بریم!</button>
-                    </div>
-                    <script src="/assets/slimselect.min.js"></script>
-                    <script src="https://js.hcaptcha.com/1/api.js?hl=fa" async defer></script>
-                    <link rel="stylesheet" type="text/css" href="/assets/slimselect.min.css">
-                    <form id="review-form" method="POST" onsubmit="return checkForm(this);" action="{{ site.reviewActionUrl }}" style="display: none;">
-                        <input name="options[slug]" id="slug" type="hidden">
-                        <input name="options[redirect]" id="redirect" type="hidden">
-                        <input name="fields[rate]" id="correctRate" type="hidden" value="3">
-                        <input name="fields[agent]" id="useragent" type="hidden">
-                        <label>ایمیل (رمزگذاری می‌شود؛ اگر آدرس نادرست وارد کنید، بعداً امکان حذف/ویرایش این تجربه را ندارید.) </label>
-                        <input class="review-form mb2em" type="email" required="required" name="fields[email]" placeholder="ایمیل شما">
-                        <label>عنوان شغلی شما</label>
-                        <input class="review-form mb2em" type="text" name="fields[job_name]" placeholder="عنوان شغلی شما (اختیاری)">
-                        <label>نوع همکاری</label>
-                        <select class="review-form mb2em" name="fields[state]">
-                            <option class="txt-right" selected>تمام وقت</option>
-                            <option class="txt-right">پاره وقت</option>
-                            <option class="txt-right">کارآموز</option>
-                            <option class="txt-right">قراردادی</option>
-                            <option class="txt-right">فریلنسر</option>
-                            <option class="txt-right">ریموت</option>
-                        </select>
-                        <label>شرح تجربه‌ی شما</label>
-                        <textarea class="review-form mb2em" rows="10" required="required" name="fields[description]" 
-                        placeholder="تجربه‌ی خود را به صورت مشروح بنویسید." minlength="300"></textarea>
-                        <label>مزایای شرکت</label>
-                        <select class="review-form mb2em" id="pros" name="fields[pros]" multiple>
-                            <option class="txt-right">بیمه</option>
-                            <option class="txt-right">بیمه تکمیلی</option>
-                            <option class="txt-right">پرداخت حقوق به موقع</option>
-                            <option class="txt-right">حقوق خوب</option>
-                            <option class="txt-right">پاداش و کارانه</option>
-                            <option class="txt-right">زمان کاری شناور</option>
-                            <option class="txt-right">امکان دورکاری</option>
-                            <option class="txt-right">مدیریت بسیار منظم</option>
-                            <option class="txt-right">تیم حرفه‌ای</option>
-                            <option class="txt-right">تیم صمیمی</option>
-                            <option class="txt-right">محیط دوستانه</option>
-                            <option class="txt-right">کادوهای مناسبتی</option>
-                            <option class="txt-right">جای پارک</option>
-                            <option class="txt-right">سرویس رفت و آمد</option>
-                            <option class="txt-right">دسترس‌پذیری خوب محل کار</option>
-                            <option class="txt-right">صبحانه رایگان</option>
-                            <option class="txt-right">ناهار رایگان</option>
-                            <option class="txt-right">خوراکی رایگان</option>
-                            <option class="txt-right">نوشیدنی رایگان</option>
-                            <option class="txt-right">حجم کاری مناسب</option>
-                            <option class="txt-right">فرهنگ سازمانی مناسب</option>
-                            <option class="txt-right">برگزاری دوره‌های آموزشی</option>
-                            <option class="txt-right">امکان یادگیری و رشد</option>
-                            <option class="txt-right">کار با آخرین تکنولوژی ها</option>
-                            <option class="txt-right">بازی رایانه ای</option>
-                            <option class="txt-right">اهمیت به دیزاین</option>
-                            <option class="txt-right">شرکت بزرگ</option>
-                        </select>
-                        <label>معایب شرکت</label>
-                        <select class="review-form mb2em" id="cons" name="fields[cons]" multiple>
-                            <option class="txt-right">عدم توازن کار و زندگی</option>
-                            <option class="txt-right">بیمه نکردن</option>
-                            <option class="txt-right">نداشتن بیمه تکمیلی</option>
-                            <option class="txt-right">محیط غیر حرفه‌ای</option>
-                            <option class="txt-right">عدم امنیت شغلی</option>
-                            <option class="txt-right">عدم پیشرفت</option>
-                            <option class="txt-right">ساعت کاری بالا</option>
-                            <option class="txt-right">بی نظمی کاری</option>
-                            <option class="txt-right">جلسات کاری بیش از اندازه</option>
-                            <option class="txt-right">هدر دادن منابع</option>
-                            <option class="txt-right">عدم شناوری ساعت کاری</option>
-                            <option class="txt-right">عدم امکان استراحت بین کار</option>
-                            <option class="txt-right">حقوق ناکافی</option>
-                            <option class="txt-right">پایه حقوق کم</option>
-                            <option class="txt-right">عدم دریافت پاداش</option>
-                            <option class="txt-right">عدم پرداخت به موقع حقوق</option>
-                            <option class="txt-right">دریافت سفته برای قرارداد</option>
-                            <option class="txt-right">مشکلات مالی شرکت</option>
-                            <option class="txt-right">کنترل افراد با دوربین</option>
-                            <option class="txt-right">مدیریت ضعیف</option>
-                            <option class="txt-right">بد قول</option>
-                            <option class="txt-right">شرکت کوچک</option>
-                        </select>
-                        <label>امتیاز کلی شما به شرکت (بین 1 تا 5)</label>
-                        <input class="review-form" type="range" alue="30" min="10" max="50"
-                            oninput="document.getElementById('rateValue').innerHTML=(this.value)/10; document.getElementById('correctRate').value=(this.value)/10"
-                            min="10">
-                        <p id="rateValue" class="center">3</p>
-                        <div class="h-captcha" data-sitekey="cc287a6e-714f-48b7-83af-1f72b2c47c28"></div>
-                        <input class="review-form review-form-submit-button" type="submit" name="submitButton"
-                            value="ارسال">
-                        <p>⚠️ چنانچه در ارسال فرم مشکل دارید، مستقیما تجربه‌ی خود را در <a
-                                href="{{ site.github }}issues/new?assignees=tajrobe&labels=%D8%AB%D8%A8%D8%AA+%D8%AA%D8%AC%D8%B1%D8%A8%D9%87%E2%80%8C%DB%8C+%DA%A9%D8%A7%D8%B1%DB%8C&template=ADD_REVIEW_TEMPLATE.md">
-                                issue گیت‌هاب</a> وارد کنید. </p>
-                    </form>
-                </section>
-            </div>
+<link rel="stylesheet" href="/assets/slimselect.min.css">
+<link rel="stylesheet" href="/assets/static/css/review-form.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<div class="tj-review-page bg-[var(--paper)] text-[var(--ink)] font-['Vazirmatn',sans-serif] min-h-screen pb-16" dir="rtl">
+
+  <header class="pt-16 px-6 pb-10 text-center border-b border-[var(--line)]">
+    <span class="block font-medium text-md tracking-[0.05em] text-[var(--muted)] mb-1">ثبت تجربه‌ی کاری برای</span>
+    <h1 id="hero-title" class="font-black text-[clamp(1.8rem,5vw,3rem)] leading-[1.25] m-0"></h1>
+  </header>
+
+  <main class="max-w-[680px] mx-auto pt-10 px-6">
+
+    <section class="bg-white border border-[var(--line)] border-t-4 border-t-[var(--accent)] rounded-[4px] p-8 max-[480px]:p-5" id="readme">
+      <p class="font-bold text-[1.1rem] mb-2">دوست گرامی سلام 👋</p>
+      <p class="text-[var(--muted)] mb-6">ممنونیم 🙏 که می‌خوای تجربه‌ات رو بنویسی، ولی قبلش این چند تا نکته رو مدّ نظر داشته باش:</p>
+
+      <ul class="list-none mb-8 p-0 flex flex-col gap-4">
+        <li class="flex gap-[0.6rem] items-start leading-[1.7] text-[0.95rem]"><span class="shrink-0">👥</span> لطفاً اسم افراد حقیقی رو ننویس! مشکلاتی مهمه که به روال‌ها و رفتارهای حرفه‌ای مربوط می‌شه، اگه مسئله شخصی‌ای وجود داره، تخریب فردی راهش نیست.</li>
+        <li class="flex gap-[0.6rem] items-start leading-[1.7] text-[0.95rem]"><span class="shrink-0">🗯️</span> لازم نیست به تجربه‌ای جواب بدی؛ سیستم اینجا بر مبنای اینه که هر کس تجربه‌اش رو بنویسه، پرسش و پاسخ نداریم.</li>
+        <li class="flex gap-[0.6rem] items-start leading-[1.7] text-[0.95rem]"><span class="shrink-0">😠</span> اگه الان عصبانی هستی، احتمالاً حالا وقت خوبی برای نوشتن تجربه‌ات نیست؛ یه ذره صبر کن!</li>
+        <li class="flex gap-[0.6rem] items-start leading-[1.7] text-[0.95rem]"><span class="shrink-0">📜</span> تجربه‌ی کوتاه یکی دو خطی به درد کسی نمی‌خوره، لطفاً یه تجربه‌ی طولانی و درست و حسابی بنویس!</li>
+        <li class="flex gap-[0.6rem] items-start leading-[1.7] text-[0.95rem]"><span class="shrink-0">👔</span> نظر و تجربه‌ی شما، شاید برای سال‌ها اینجا یادگاری بمونه؛ پس چیزی بنویس که نشون دهنده‌ی رفتار حرفه‌ایت باشه.</li>
+      </ul>
+
+      <button type="button" class="review-form-submit-button inline-block w-full bg-[var(--accent)] text-white font-['Vazirmatn',sans-serif] font-bold text-base border-none rounded-[4px] py-[0.9rem] px-6 cursor-pointer transition-[transform,box-shadow] duration-150 ease-in-out hover:-translate-y-px hover:shadow-[0_4px_14px_rgba(240,73,35,0.35)] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[var(--ink)] focus-visible:outline-offset-2 motion-reduce:transition-none"
+        onclick="showReviewForm()">
+        بزن بریم!
+      </button>
+    </section>
+
+    <script src="/assets/slimselect.min.js"></script>
+    <script src="https://js.hcaptcha.com/1/api.js?hl=fa" async defer></script>
+
+    <form id="review-form" class="bg-white border border-[var(--line)] rounded-[4px] p-8 mt-6 flex flex-col max-[480px]:p-5" method="POST" onsubmit="return checkForm(this);" action="{{ site.reviewActionUrl }}" style="display: none;">
+      <input name="options[slug]" id="slug" type="hidden">
+      <input name="options[redirect]" id="redirect" type="hidden">
+      <input name="fields[rate]" id="correctRate" type="hidden" value="3">
+      <input name="fields[agent]" id="useragent" type="hidden">
+
+      <div class="py-6 border-b border-[var(--line)] first:pt-0">
+        <label class="block font-bold text-[0.95rem] mb-[0.6rem]">ایمیل <span class="font-normal text-[0.8rem] text-[var(--muted)]">(رمزگذاری می‌شود؛ اگر آدرس نادرست وارد کنید، بعداً امکان حذف/ویرایش این تجربه را ندارید.)</span></label>
+        <input class="review-form w-full font-['Vazirmatn',sans-serif] text-[0.95rem] py-[0.7rem] px-[0.9rem] border border-[var(--line)] rounded-[4px] bg-[var(--paper)] text-[var(--ink)] transition-colors duration-150 ease-in-out focus:outline-none focus:border-[var(--accent)]" type="email" required="required" name="fields[email]" placeholder="ایمیل شما">
+      </div>
+
+      <div class="py-6 border-b border-[var(--line)] first:pt-0">
+        <label class="block font-bold text-[0.95rem] mb-[0.6rem]">عنوان شغلی شما</label>
+        <input class="review-form w-full font-['Vazirmatn',sans-serif] text-[0.95rem] py-[0.7rem] px-[0.9rem] border border-[var(--line)] rounded-[4px] bg-[var(--paper)] text-[var(--ink)] transition-colors duration-150 ease-in-out focus:outline-none focus:border-[var(--accent)]" type="text" name="fields[job_name]" placeholder="عنوان شغلی شما (اختیاری)">
+      </div>
+
+      <div class="py-6 border-b border-[var(--line)] first:pt-0">
+        <label class="block font-bold text-[0.95rem] mb-[0.6rem]">نوع همکاری</label>
+        <select class="review-form w-full font-['Vazirmatn',sans-serif] text-[0.95rem] py-[0.7rem] px-[0.9rem] border border-[var(--line)] rounded-[4px] bg-[var(--paper)] text-[var(--ink)] transition-colors duration-150 ease-in-out focus:outline-none focus:border-[var(--accent)]" name="fields[state]">
+          <option class="txt-right" selected>تمام وقت</option>
+          <option class="txt-right">پاره وقت</option>
+          <option class="txt-right">کارآموز</option>
+          <option class="txt-right">قراردادی</option>
+          <option class="txt-right">فریلنسر</option>
+          <option class="txt-right">ریموت</option>
+          <option class="txt-right">مصاحبه</option>
+        </select>
+      </div>
+
+      <div class="py-6 border-b border-[var(--line)] first:pt-0">
+        <label class="block font-bold text-[0.95rem] mb-[0.6rem]">شرح تجربه‌ی شما</label>
+        <textarea class="review-form w-full font-['Vazirmatn',sans-serif] text-[0.95rem] py-[0.7rem] px-[0.9rem] border border-[var(--line)] rounded-[4px] bg-[var(--paper)] text-[var(--ink)] transition-colors duration-150 ease-in-out focus:outline-none focus:border-[var(--accent)] resize-y min-h-[160px]" rows="10" required="required" name="fields[description]"
+          placeholder="تجربه‌ی خود را به صورت مشروح بنویسید." minlength="300"></textarea>
+      </div>
+
+      <div class="py-6 border-b border-[var(--line)] first:pt-0">
+        <label class="tj-label-pro block font-bold text-[0.95rem] mb-[0.6rem]">مزایای شرکت</label>
+        <select class="review-form w-full font-['Vazirmatn',sans-serif] text-[0.95rem] py-[0.7rem] px-[0.9rem] border border-[var(--line)] rounded-[4px] bg-[var(--paper)] text-[var(--ink)] transition-colors duration-150 ease-in-out focus:outline-none focus:border-[var(--accent)]" id="pros" name="fields[pros]" multiple>
+          <option class="txt-right">بیمه</option>
+          <option class="txt-right">بیمه تکمیلی</option>
+          <option class="txt-right">پرداخت حقوق به موقع</option>
+          <option class="txt-right">حقوق خوب</option>
+          <option class="txt-right">پاداش و کارانه</option>
+          <option class="txt-right">زمان کاری شناور</option>
+          <option class="txt-right">امکان دورکاری</option>
+          <option class="txt-right">مدیریت بسیار منظم</option>
+          <option class="txt-right">تیم حرفه‌ای</option>
+          <option class="txt-right">تیم صمیمی</option>
+          <option class="txt-right">محیط دوستانه</option>
+          <option class="txt-right">کادوهای مناسبتی</option>
+          <option class="txt-right">جای پارک</option>
+          <option class="txt-right">سرویس رفت و آمد</option>
+          <option class="txt-right">دسترس‌پذیری خوب محل کار</option>
+          <option class="txt-right">صبحانه رایگان</option>
+          <option class="txt-right">ناهار رایگان</option>
+          <option class="txt-right">خوراکی رایگان</option>
+          <option class="txt-right">نوشیدنی رایگان</option>
+          <option class="txt-right">حجم کاری مناسب</option>
+          <option class="txt-right">فرهنگ سازمانی مناسب</option>
+          <option class="txt-right">برگزاری دوره‌های آموزشی</option>
+          <option class="txt-right">امکان یادگیری و رشد</option>
+          <option class="txt-right">کار با آخرین تکنولوژی ها</option>
+          <option class="txt-right">بازی رایانه ای</option>
+          <option class="txt-right">اهمیت به دیزاین</option>
+          <option class="txt-right">شرکت بزرگ</option>
+        </select>
+      </div>
+
+      <div class="py-6 border-b border-[var(--line)] first:pt-0">
+        <label class="tj-label-con block font-bold text-[0.95rem] mb-[0.6rem]">معایب شرکت</label>
+        <select class="review-form w-full font-['Vazirmatn',sans-serif] text-[0.95rem] py-[0.7rem] px-[0.9rem] border border-[var(--line)] rounded-[4px] bg-[var(--paper)] text-[var(--ink)] transition-colors duration-150 ease-in-out focus:outline-none focus:border-[var(--accent)]" id="cons" name="fields[cons]" multiple>
+          <option class="txt-right">عدم توازن کار و زندگی</option>
+          <option class="txt-right">بیمه نکردن</option>
+          <option class="txt-right">نداشتن بیمه تکمیلی</option>
+          <option class="txt-right">محیط غیر حرفه‌ای</option>
+          <option class="txt-right">عدم امنیت شغلی</option>
+          <option class="txt-right">عدم پیشرفت</option>
+          <option class="txt-right">ساعت کاری بالا</option>
+          <option class="txt-right">بی نظمی کاری</option>
+          <option class="txt-right">جلسات کاری بیش از اندازه</option>
+          <option class="txt-right">هدر دادن منابع</option>
+          <option class="txt-right">عدم شناوری ساعت کاری</option>
+          <option class="txt-right">عدم امکان استراحت بین کار</option>
+          <option class="txt-right">حقوق ناکافی</option>
+          <option class="txt-right">پایه حقوق کم</option>
+          <option class="txt-right">عدم دریافت پاداش</option>
+          <option class="txt-right">عدم پرداخت به موقع حقوق</option>
+          <option class="txt-right">دریافت سفته برای قرارداد</option>
+          <option class="txt-right">مشکلات مالی شرکت</option>
+          <option class="txt-right">کنترل افراد با دوربین</option>
+          <option class="txt-right">مدیریت ضعیف</option>
+          <option class="txt-right">بد قول</option>
+          <option class="txt-right">شرکت کوچک</option>
+        </select>
+      </div>
+
+      <div class="py-6 border-b border-[var(--line)] first:pt-0 text-center">
+        <label class="block font-bold text-[0.95rem] mb-[0.6rem]">امتیاز کلی شما به شرکت <span class="font-normal text-[0.8rem] text-[var(--muted)]">(بین ۱ تا ۵)</span></label>
+        <div class="mb-3">
+          <span id="rateValue" class="font-['JetBrains_Mono',monospace] font-bold text-[2.75rem] text-[var(--accent)] leading-none">3</span>
         </div>
-    </div>
+        <input class="tj-range appearance-none w-full h-[10px] rounded-[6px] bg-[linear-gradient(to_left,var(--accent)_0%,var(--accent)_var(--tj-range-pct,50%),var(--line)_var(--tj-range-pct,50%),var(--line)_100%)] cursor-pointer" type="range" value="30" min="10" max="50"
+          oninput="document.getElementById('rateValue').innerHTML=(this.value)/10; document.getElementById('correctRate').value=(this.value)/10; this.style.setProperty('--tj-range-pct', ((this.value-this.min)/(this.max-this.min)*100)+'%')"
+          min="10">
+      </div>
+
+      <div class="flex justify-center py-6">
+        <div class="h-captcha" data-sitekey="cc287a6e-714f-48b7-83af-1f72b2c47c28"></div>
+      </div>
+
+      <input class="review-form review-form-submit-button mt-2 inline-block w-full bg-[var(--accent)] text-white font-['Vazirmatn',sans-serif] font-bold text-base border-none rounded-[4px] py-[0.9rem] px-6 cursor-pointer transition-[transform,box-shadow] duration-150 ease-in-out hover:-translate-y-px hover:shadow-[0_4px_14px_rgba(240,73,35,0.35)] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[var(--ink)] focus-visible:outline-offset-2 motion-reduce:transition-none" type="submit" name="submitButton" value="ارسال">
+
+      <p class="text-center text-[0.8rem] text-[var(--muted)] mt-5">⚠️ چنانچه در ارسال فرم مشکل دارید، مستقیما تجربه‌ی خود را در
+        <a class="text-[var(--accent)] font-bold" href="{{ site.github }}issues/new?assignees=tajrobe&labels=%D8%AB%D8%A8%D8%AA+%D8%AA%D8%AC%D8%B1%D8%A8%D9%87%E2%80%8C%DB%8C+%DA%A9%D8%A7%D8%B1%DB%8C&template=ADD_REVIEW_TEMPLATE.md">
+          issue گیت‌هاب</a> وارد کنید.
+      </p>
+    </form>
+
+  </main>
 </div>
+
 <script>
     let url = new URL(window.location.href), occurrence = 0;
-    fetch('https://api.github.com/repos/tajrobe/tajrobe.github.io/commits?per_page=50').then(res => res.json()).then(trees => { trees.forEach(function (t) { if (decodeURIComponent(url.searchParams.get("name")) == t.commit.message.split("/")[1]) occurrence++; }); if (occurrence > 2) window.location.replace("https://github.com/tajrobe/tajrobe.github.io/issues/new?assignees=tajrobe&labels=%D8%AB%D8%A8%D8%AA+%D8%AA%D8%AC%D8%B1%D8%A8%D9%87%E2%80%8C%DB%8C+%DA%A9%D8%A7%D8%B1%DB%8C&projects=&template=ADD_REVIEW_TEMPLATE.md"); });
-    document.querySelector('#hero-title').append(url.searchParams.get("name").replaceAll("-", " "));
+    const nameParam = url.searchParams.get("name");
+    fetch('https://api.github.com/repos/tajrobe/tajrobe.github.io/commits?per_page=50').then(res => res.json()).then(trees => { trees.forEach(function (t) { if (nameParam && decodeURIComponent(nameParam) == t.commit.message.split("/")[1]) occurrence++; }); if (occurrence > 2) window.location.replace("https://github.com/tajrobe/tajrobe.github.io/issues/new?assignees=tajrobe&labels=%D8%AB%D8%A8%D8%AA+%D8%AA%D8%AC%D8%B1%D8%A8%D9%87%E2%80%8C%DB%8C+%DA%A9%D8%A7%D8%B1%DB%8C&projects=&template=ADD_REVIEW_TEMPLATE.md"); });
+    if (nameParam) document.querySelector('#hero-title').append(nameParam.replaceAll("-", " "));
     document.querySelector("#slug").value = url.searchParams.get("slug");
-    document.querySelector("#redirect").value = "{{ site.url }}/" + url.searchParams.get("name") + "?sendReview=true";
+    document.querySelector("#redirect").value = "{{ site.url }}/" + (nameParam || "") + "?sendReview=true";
     document.querySelector("#useragent").value = navigator.userAgent;
-    new SlimSelect({ select: '#pros', placeholder: 'انتخاب کنید...' }).selected();
-    new SlimSelect({ select: '#cons', placeholder: 'انتخاب کنید...' }).selected();
+
+    let prosSlim, consSlim;
+    function showReviewForm() {
+        document.getElementById('readme').style.display = 'none';
+        document.getElementById('review-form').style.display = 'block';
+        // SlimSelect needs the <select> to actually have layout (width/height)
+        // to build its custom UI. Initializing it while the form was still
+        // display:none meant offsetWidth was 0, so it silently failed and
+        // left the plain native multi-select showing instead. Initializing
+        // here, right after the form becomes visible, fixes that.
+        if (!prosSlim) prosSlim = new SlimSelect({ select: '#pros', placeholder: 'انتخاب کنید...' });
+        if (!consSlim) consSlim = new SlimSelect({ select: '#cons', placeholder: 'انتخاب کنید...' });
+    }
 
     function checkForm(form) {
         if (form.reportValidity() && document.getElementsByName("h-captcha-response")[0].value) {
