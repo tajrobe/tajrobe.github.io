@@ -1,0 +1,42 @@
+/*
+  Everything that used to live here has moved into Tailwind utility
+  classes directly on the elements (see company.html).
+
+  Only two things stay in plain CSS, because Tailwind has no utility
+  for them:
+
+  1. The color tokens as real CSS custom properties, so the markup can
+     reference them as `text-[var(--ink)]`, `bg-[var(--accent)]`, etc.
+     instead of hardcoding hex values in a dozen places.
+
+  2. The ::before pseudo-element that prints the ribbon label
+     (`data-ribbon="..."`) on old/unverified review cards. Tailwind
+     can't generate `content: attr(...)` — there's no utility for
+     pulling an attribute value into generated content.
+*/
+
+.tj-company {
+  --paper: #FAFAF8;
+  --card: #FFFFFF;
+  --ink: #17181C;
+  --body: #3D3E44;
+  --muted: #8A8B93;
+  --faint: #B5B6BC;
+  --line: #ECEAE3;
+  --chip: #F1F0EC;
+  --accent: #F04923;
+  --accent-tint: #FBEAE4;
+  --accent-ink: #C13A17;
+}
+
+.tj-ribbon::before {
+  content: attr(data-ribbon);
+  display: inline-block;
+  background: var(--chip);
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.6rem;
+}

@@ -1,9 +1,9 @@
 name: تجربه‌های کاری
 url: https://tajrobe.github.io
-baseurl: /
+baseurl: ""
 permalink: /:title/
 paginate_path: /page/:num/
-paginate: 200
+paginate: 20
 disqus:
 github: https://github.com/tajrobe/tajrobe.github.io/
 reviewActionUrl: https://get-review-form.tajrobe98.workers.dev

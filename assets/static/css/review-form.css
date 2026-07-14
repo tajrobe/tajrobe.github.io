@@ -1,0 +1,45 @@
+
+
+.tj-review-page {
+  --paper: #FAFAF7;
+  --ink: #141414;
+  --accent: #F04923;
+  --line: rgba(20, 20, 20, 0.12);
+  --muted: #6B6B6B;
+}
+
+.tj-review-page .tj-label-pro::before {
+  content: "+ ";
+  color: var(--accent);
+  font-weight: 900;
+}
+.tj-review-page .tj-label-con::before {
+  content: "− ";
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.tj-review-page .tj-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px var(--line);
+  cursor: pointer;
+}
+.tj-review-page .tj-range::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px var(--line);
+  cursor: pointer;
+}
+
+.tj-review-page .ss-main { border-color: var(--line) !important; border-radius: 4px !important; }
+.tj-review-page .ss-main .ss-values .ss-value { background: var(--ink) !important; }
+.tj-review-page .ss-content .ss-list .ss-option.ss-highlighted,
+.tj-review-page .ss-content .ss-list .ss-option:hover { background: var(--accent) !important; color: #fff !important; }
