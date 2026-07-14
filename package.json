@@ -3,6 +3,7 @@
     "js-yaml": "^4.1.0"
   },
   "scripts": {
-    "build": "node ./extension-data-generator.js"
+    "build": "node ./extension-data-generator.js",
+    "check": "node ./script/check-third-party.js"
   }
 }

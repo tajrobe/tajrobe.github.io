@@ -2,9 +2,14 @@
 name: Deploy Jekyll with GitHub Pages dependencies preinstalled
 
 on:
-  # Runs on pushes targeting the default branch
+  # New reviews are committed straight to master and must rebuild the site
+  # immediately, with no pull request in the way. Keep this trigger.
   push:
     branches: ["master"]
+
+  # Code, unlike content, arrives as a pull request — so the checks have to run
+  # there. Catching an injected ad script after it is on master is too late.
+  pull_request:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -14,6 +19,8 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  # Lets check-push-policy.sh ask whether a code change came from a merged PR.
+  pull-requests: read
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
@@ -22,9 +29,41 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Refuses to let unapproved third-party code reach users. Gates the build, so
+  # a page that loads an unknown script never gets deployed in the first place.
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          # The push policy diffs this push against the previous commit.
+          fetch-depth: 0
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+      - run: npm ci
+      - name: Check for unapproved third-party code
+        run: npm run check
+
+      # Content (_data/, _posts/) deploys on a direct push — that is how a new
+      # review goes live, and it stays that way. Code pushed straight to master
+      # is refused: that is how the 2025 ad script got in.
+      - name: Check push policy
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        # Called through bash so it does not depend on the executable bit, which
+        # does not survive a commit made from Windows.
+        run: bash ./script/check-push-policy.sh "${{ github.event.before }}" "${{ github.sha }}"
+
   # Build job
   build:
     runs-on: ubuntu-latest
+    needs: check
+    # Pull requests are validated by `check` but never deployed.
+    if: github.event_name != 'pull_request'
     steps:
       - name: Checkout
         uses: actions/checkout@v3

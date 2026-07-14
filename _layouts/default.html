@@ -1,6 +1,38 @@
 ﻿<!DOCTYPE html>
 <html lang="fa" dir="rtl">
   <head>
+    <meta charset="utf-8" />
+    {%- comment -%}
+      Only the hosts named below may load code, styles, fonts or images, or
+      receive form submissions. The browser refuses everything else.
+
+      This matters more here than on most sites: any third-party script on this
+      page can read a review while the user is still typing it, before they
+      ever press submit. Anonymity is the product, so the allowlist is part of
+      the product.
+
+      script-src keeps 'unsafe-inline' because the pages use inline script
+      blocks and Jekyll cannot emit per-request nonces on GitHub Pages. The
+      host allowlist is what carries the weight: an injected loader exists to
+      pull remote JS, and no host outside this list can serve it.
+
+      Adding a host here is a deliberate, reviewed change.
+      script/check-third-party.js fails the build if markup and this list disagree.
+    {%- endcomment -%}
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+               script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://js.hcaptcha.com https://*.hcaptcha.com;
+               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+               font-src 'self' https://fonts.gstatic.com;
+               img-src 'self' data: https://placehold.co https://*.hcaptcha.com;
+               connect-src 'self' https://api.github.com https://*.hcaptcha.com;
+               form-action 'self' {{ site.reviewActionUrl }};
+               frame-src https://*.hcaptcha.com;
+               base-uri 'self';
+               object-src 'none'"
+    />
+    <meta name="referrer" content="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap"
@@ -89,10 +121,5 @@
       </div>
     </footer>
     {%- include analytics.html -%}
-    <script type="text/javascript" data-cfasync="false">
-      /*<![CDATA[/* */
-      (function(){var b=window,m="ec507883a05989e0edde6b3986b18640",r=[["siteId",477*812+42+87-721+4871766],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],j=["d3d3LmNkbjRhZHMuY29tL0tXZUIvcWxpc3QuZnV6enlzZWFyY2gubWluLmpz","ZDNnNW92Zm5nanc5YncuY2xvdWRmcm9udC5uZXQvWEVnL3B4Yy9kSlNMaXRlLm1pbi5jc3M=","d3d3LmluY3pleWFnbmouY29tL01pSVlTL3hsaXN0LmZ1enp5c2VhcmNoLm1pbi5qcw==","d3d3LnB6eXZsY2xsLmNvbS9STHhPTi9RRXJTTHQvZkpTTGl0ZS5taW4uY3Nz"],z=-1,d,x,p=function(){clearTimeout(x);z++;if(j[z]&&!(1809931825000<(new Date).getTime()&&1<z)){d=b.document.createElement("script");d.type="text/javascript";d.async=!0;var s=b.document.getElementsByTagName("script")[0];d.src="https://"+atob(j[z]);d.crossOrigin="anonymous";d.onerror=p;d.onload=function(){clearTimeout(x);b[m.slice(0,16)+m.slice(0,16)]||p()};x=setTimeout(p,5E3);s.parentNode.insertBefore(d,s)}};if(!b[m]){try{Object.freeze(b[m]=r)}catch(e){}p()}})();
-      /*]]>/* */
-      </script>             
   </body>
 </html>
