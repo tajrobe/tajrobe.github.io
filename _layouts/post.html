@@ -106,9 +106,11 @@ layout: default
             {%- for con in cons -%}<span class="text-[0.72rem] px-3 py-[0.3rem] rounded-full bg-[var(--chip)] text-[var(--muted)]">{{ con | replace: '"', '' | replace: ']', '' | replace: '[', '' }}</span>{%- endfor -%}
           </div>
           {%- endif -%}
-          <div class="border-t border-[var(--line)] pt-3 mt-3 text-[0.75rem] text-[var(--faint)]">
+          <div class="pt-3 mt-3 text-[0.75rem] text-[var(--faint)]">
             <a class="text-[var(--faint)] font-medium no-underline hover:text-[var(--accent-ink)]" href="{{ site.github }}blob/master/_data/review/{{ page.company_slug }}/{{ comment[0] }}.yml" target="_blank">پیوند یکتای این تجربه‌ی کاری</a>
-            <div style="margin-top: 0.5rem;">ℹ️ این تجربه، نظر شخصی یک فرد است و الزامی بر درستی/نادرستی آن نیست.</div>
+          </div>
+          <div class="border-t border-[var(--line)] pt-3 mt-3 text-[0.75rem] text-[var(--faint)]">
+            <div>ℹ️ این تجربه، نظر شخصی یک فرد است و الزامی بر درستی/نادرستی آن نیست.</div>
           </div>
         </div>
       </section>
