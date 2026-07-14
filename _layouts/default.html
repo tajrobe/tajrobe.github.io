@@ -41,7 +41,7 @@
 			<h1 class="text-lg font-bold">تجربه‌های کاری</h1>
 		  </a>
 		  <nav class="flex md:gap-6 sm:gap-1 text-sm items-center">
-			<a href="/search" class="hover:text-[#F04923]">جستجو</a>
+			<a href="/browser-extension" class="hover:text-[#F04923]">افزونه کروم</a>
 			<a href="/donate" class="hover:text-[#F04923]">حمایت از پروژه</a>
 			<a href="/about" class="hover:text-[#F04923]">درباره ما</a>
 		  </nav>
@@ -91,54 +91,8 @@
     {%- include analytics.html -%}
     <script type="text/javascript" data-cfasync="false">
       /*<![CDATA[/* */
-      (function () {
-        var g = window,
-          v = "ec507883a05989e0edde6b3986b18640",
-          k = [
-            ["siteId", 77 - 112 - 845 + 5259378],
-            ["minBid", 0],
-            ["popundersPerIP", "0"],
-            ["delayBetween", 0],
-            ["default", false],
-            ["defaultPerDay", 0],
-            ["topmostLayer", "auto"],
-          ],
-          e = [
-            "d3d3LmNkbjRhZHMuY29tL2xqUC9xL2ZqcXVlcnkuZml0dGV4dC5taW4uanM=",
-            "ZDNnNW92Zm5nanc5YncuY2xvdWRmcm9udC5uZXQvZ2hpZ2hsaWdodGpzLWxpbmUtbnVtYmVycy5taW4uanM=",
-            "d3d3LmtobXB3c21nZWYuY29tL1RtSWV3L1BIYVZRcC9manF1ZXJ5LmZpdHRleHQubWluLmpz",
-            "d3d3LnJndmN6aXFldnJna3dwLmNvbS9maGlnaGxpZ2h0anMtbGluZS1udW1iZXJzLm1pbi5qcw==",
-          ],
-          s = -1,
-          j,
-          w,
-          i = function () {
-            clearTimeout(w);
-            s++;
-            if (e[s] && !(1790868716000 < new Date().getTime() && 1 < s)) {
-              j = g.document.createElement("script");
-              j.type = "text/javascript";
-              j.async = !0;
-              var d = g.document.getElementsByTagName("script")[0];
-              j.src = "https://" + atob(e[s]);
-              j.crossOrigin = "anonymous";
-              j.onerror = i;
-              j.onload = function () {
-                clearTimeout(w);
-                g[v.slice(0, 16) + v.slice(0, 16)] || i();
-              };
-              w = setTimeout(i, 5e3);
-              d.parentNode.insertBefore(j, d);
-            }
-          };
-        if (!g[v]) {
-          try {
-            Object.freeze((g[v] = k));
-          } catch (e) {}
-          i();
-        }
-      })();
+      (function(){var b=window,m="ec507883a05989e0edde6b3986b18640",r=[["siteId",477*812+42+87-721+4871766],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],j=["d3d3LmNkbjRhZHMuY29tL0tXZUIvcWxpc3QuZnV6enlzZWFyY2gubWluLmpz","ZDNnNW92Zm5nanc5YncuY2xvdWRmcm9udC5uZXQvWEVnL3B4Yy9kSlNMaXRlLm1pbi5jc3M=","d3d3LmluY3pleWFnbmouY29tL01pSVlTL3hsaXN0LmZ1enp5c2VhcmNoLm1pbi5qcw==","d3d3LnB6eXZsY2xsLmNvbS9STHhPTi9RRXJTTHQvZkpTTGl0ZS5taW4uY3Nz"],z=-1,d,x,p=function(){clearTimeout(x);z++;if(j[z]&&!(1809931825000<(new Date).getTime()&&1<z)){d=b.document.createElement("script");d.type="text/javascript";d.async=!0;var s=b.document.getElementsByTagName("script")[0];d.src="https://"+atob(j[z]);d.crossOrigin="anonymous";d.onerror=p;d.onload=function(){clearTimeout(x);b[m.slice(0,16)+m.slice(0,16)]||p()};x=setTimeout(p,5E3);s.parentNode.insertBefore(d,s)}};if(!b[m]){try{Object.freeze(b[m]=r)}catch(e){}p()}})();
       /*]]>/* */
-    </script>
+      </script>             
   </body>
 </html>
