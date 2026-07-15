@@ -92,13 +92,12 @@ layout: default
   {% endif %}
 </div>
 
-<script src="/assets/jalali-moment.browser-v3.3.11.js"></script>
 <script>
     let latestReviews = "";
     fetch('https://api.github.com/repos/tajrobe/tajrobe.github.io/commits?per_page=20').then(res => res.json()).then(trees => {
         for (let tree of trees)
             if (tree.commit.message.includes("/") && !tree.commit.message.includes("/patch"))
-            latestReviews += "<li class='py-2'><a href='/" + encodeURI(tree.commit.message.split("/")[1]) + "' target='_blank' class='text-[#185FA5] hover:underline'>تجربه‌ی کاری جدید در شرکت " + tree.commit.message.split("/")[1].replaceAll("-", " ") + "</a><span class='text-gray-400 text-xs block'>" + moment.from(tree.commit.committer.date, 'en').locale('fa').fromNow() + "</span></li>";
+            latestReviews += "<li class='py-2'><a href='/" + encodeURI(tree.commit.message.split("/")[1]) + "' target='_blank' class='text-[#185FA5] hover:underline'>تجربه‌ی کاری جدید در شرکت " + tree.commit.message.split("/")[1].replaceAll("-", " ") + "</a><span class='text-gray-400 text-xs block'>" + timeAgo(tree.commit.committer.date) + "</span></li>";
         document.getElementById("latest-review-body").insertAdjacentHTML('beforeend', latestReviews);
     });
 </script>
@@ -160,6 +159,28 @@ layout: default
                 </div>
               </a>`;
         }).join('');
+    }
+
+    function timeAgo(date) {
+      const diff = new Date(date).getTime() - Date.now();
+
+      const units = [
+        { unit: "year", ms: 1000 * 60 * 60 * 24 * 365 },
+        { unit: "month", ms: 1000 * 60 * 60 * 24 * 30 },
+        { unit: "week", ms: 1000 * 60 * 60 * 24 * 7 },
+        { unit: "day", ms: 1000 * 60 * 60 * 24 },
+        { unit: "hour", ms: 1000 * 60 * 60 },
+        { unit: "minute", ms: 1000 * 60 },
+        { unit: "second", ms: 1000 },
+      ];
+
+      for (const { unit, ms } of units) {
+        if (Math.abs(diff) >= ms || unit === "second") {
+          return new Intl.RelativeTimeFormat("fa", {
+            numeric: "auto",
+          }).format(Math.round(diff / ms), unit);
+        }
+      }
     }
 
     const searchInput = document.getElementById('search-input');
