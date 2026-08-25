@@ -96,7 +96,7 @@ layout: default
           {%- endif -%}
         </div>
         <div class="[&_hr]:hidden">
-          <p class="leading-[1.9] text-[0.9rem] text-[var(--body)] mb-4 whitespace-pre-line">{{ comment[1].description | newline_to_br | strip_newlines | replace: '<p><br></p>', '' }}</p>
+          <p class="leading-[1.9] text-[0.9rem] text-[var(--body)] mb-4 whitespace-normal">{{ comment[1].description | newline_to_br | strip_newlines | replace: '<p><br></p>', '' }}</p>
           {% assign pros = comment[1].pros | split: "," %}
           {% assign cons = comment[1].cons | split: "," %}
           {%- if pros.size > 0 or cons.size > 0 -%}
